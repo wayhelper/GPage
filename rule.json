@@ -28,14 +28,5 @@
         "server_name": "i.alal.site"
       }
     }
-  ],
-  "route": {
-    "rules": [
-      {
-        "inbound": ["socks-in"]
-      },{
-        "outbound": "hysteria-out"
-      }
-    ]
-  }
+  ]
 }
