@@ -1,27 +1,44 @@
 {
+  "log": {
+    "level": "info",
+    "timestamp": true
+  },
   "inbounds": [
     {
       "type": "socks",
       "tag": "socks-in",
       "listen": "::",
-      "listen_port": 2336
+      "listen_port": 2336,
+      "sniff": true,
+      "sniff_override_destination": true
     }
   ],
   "outbounds": [
     {
       "type": "hysteria2",
+      "tag": "hysteria-out",
       "server": "i.alal.site",
       "server_port": 9527,
       "up_mbps": 20,
       "down_mbps": 100,
       "password": "guojingwei",
+      "alpn": [
+        "h3"
+      ],
       "tls": {
         "enabled": true,
-        "server_name": "i.alal.site",
-        "alpn": [
-          "h3"
-        ]
+        "insecure": false,
+        "server_name": "i.alal.site"
       }
     }
-  ]
+  ],
+  "route": {
+    "rules": [
+      {
+        "type": "field",
+        "inbound": ["socks-in"],
+        "outbound": "hysteria-out"
+      }
+    ]
+  }
 }
