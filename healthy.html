@@ -4,6 +4,9 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>低 GI 晚餐 + 运动一周计划（可打勾 · 可打印）</title>
+    <link rel="stylesheet" href="./css/common.css"/>
+    <script src="./js/common.js"></script>
+    <link>
     <style>
         :root{--bg:#f7fafc;--card:#fff;--text:#0f172a;--muted:#64748b;--accent:#0ea5a4}
         [data-dark="true"]{--bg:#0b1220;--card:#071024;--text:#e6eef8;--muted:#93a5bf}
@@ -192,7 +195,7 @@
     // 为用户方便：监听键盘 Ctrl+S 保存本地（只是触发 save 到 localStorage）
     window.addEventListener('keydown', (e)=>{
         if((e.ctrlKey || e.metaKey) && e.key.toLowerCase()==='s'){
-            e.preventDefault(); save(); alert('已保存到本地缓存（localStorage）');
+            e.preventDefault(); save(); msg('已保存到本地缓存（localStorage）');
         }
     });
 </script>
