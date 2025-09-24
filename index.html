@@ -29,7 +29,7 @@
     // 加载 JSON 数据
     async function loadNavData() {
         try {
-            const res = await fetch('nav.json');
+            const res = await fetch('website-map.json');
             navData = await res.json();
             renderCards(navData);
         } catch (err) {
