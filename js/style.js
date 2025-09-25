@@ -28,7 +28,7 @@ function renderCards(data) {
             item.clicks++;
 
             // 调用保存方法，将 navData 更新到后端
-            await updateClickRate(data);
+            await updateClickRate(item);
 
             // 打开链接
             window.open(item.url, '_blank', 'noopener,noreferrer');
@@ -38,12 +38,17 @@ function renderCards(data) {
 }
 
 // =================== 更新点击率 ===================
-async function updateClickRate(data) {
-    data.sort((a, b) => b.clicks - a.clicks);
+async function updateClickRate(item) {
+    // 按点击量排序
+    let foundItem = navData.find(navItem => navItem.name === item.name);
+    if (foundItem) {
+        foundItem.clicks = item.clicks;
+    }
+    navData.sort((a, b) => b.clicks - a.clicks);
     await fetch('/nav', {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify(data)
+        body: JSON.stringify(navData)
     });
 }
 
