@@ -57,8 +57,11 @@
         renderCards(filtered);
     }
 
-    // 页面加载时渲染导航
-    loadNavData();
+    // 页面加载时渲染导航并自动聚焦搜索框
+    window.addEventListener('DOMContentLoaded', () => {
+        loadNavData();
+        document.getElementById('searchBox').focus();
+    });
 </script>
 </body>
 </html>
