@@ -119,14 +119,33 @@
         document.body.appendChild(modal);
 
         saveBtn.addEventListener('click', async () => {
-            await fetch('/nav', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: textarea.value
-            });
-            alert('已保存');
-            modal.style.display = 'none';
-            loadNavData();
+
+            let token = prompt("请输入密钥以访问页面：");
+            if (!token) {
+                alert("密钥不能为空！");
+                return;
+            }
+            fetch('pwd.txt')
+                .then(response => response.text())
+                .then(async text => {
+                    let pwd = decrypt(text.trim(), token);
+                    if (pwd === token) {
+                        // 认证成功
+                        await fetch('/nav', {
+                            method: 'POST',
+                            headers: {'Content-Type': 'application/json'},
+                            body: textarea.value
+                        });
+                        alert('已保存');
+                        modal.style.display = 'none';
+                        loadNavData();
+                    } else {
+                        alert("认证失败！");
+                    }
+                })
+                .catch(error => {
+                    alert("认证过程出错");
+                });
         });
 
         closeBtn.addEventListener('click', () => {
@@ -156,6 +175,46 @@
         loadNavData();
         document.getElementById('searchBox').focus();
     });
+
+    /**
+     * 将十六进制字符串转换为字节数组
+     * @param {string} hexStr
+     * @returns {Uint8Array}
+     */
+    function hexStr2ByteArr(hexStr) {
+        let bytes = [];
+        for (let i = 0; i < hexStr.length; i += 2) {
+            bytes.push(parseInt(hexStr.substr(i, 2), 16));
+        }
+        return new Uint8Array(bytes);
+    }
+
+    /**
+     * 生成 8 字节 DES 密钥
+     * @param {string} keyStr
+     * @returns {CryptoJS.lib.WordArray}
+     */
+    function getKey(keyStr) {
+        let keyBytes = CryptoJS.enc.Utf8.parse(keyStr);
+        return CryptoJS.lib.WordArray.create(keyBytes.words.slice(0, 2)); // 取前 8 字节
+    }
+
+
+    /**
+     * DES 解密
+     * @param {string} encryptedText 需要解密的十六进制字符串
+     * @param {string} key 解密密钥
+     * @returns {string} 解密后的字符串
+     */
+    function decrypt(encryptedText, key) {
+        let encryptedBytes = hexStr2ByteArr(encryptedText);
+        let encryptedWordArray = CryptoJS.lib.WordArray.create(encryptedBytes);
+        let decrypted = CryptoJS.DES.decrypt({ ciphertext: encryptedWordArray }, getKey(key), {
+            mode: CryptoJS.mode.ECB,
+            padding: CryptoJS.pad.Pkcs7,
+        });
+        return decrypted.toString(CryptoJS.enc.Utf8);
+    }
 </script>
 </body>
 </html>
