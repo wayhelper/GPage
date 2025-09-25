@@ -1,3 +1,4 @@
+<!--
 <!DOCTYPE html>
 <html lang="zh-CN">
     <head>
@@ -17,3 +18,161 @@
     </body>
 </html>
 
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GSearch - Vue</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="./js/crypto-js.min.js"></script>
+</head>
+<body>
+
+<div id="app">
+    <h1 @click="handleTitleClick">{{ title }}</h1>
+    <input type="text" id="searchBox" placeholder="Search..." v-model="searchQuery">
+    <div class="card-container" id="navCards">
+        <div v-for="item in filteredCards" :key="item.name" class="card" @click="openLink(item.url)">
+            {{ item.name }}
+        </div>
+    </div>
+
+    <div id="modal" v-show="showModal">
+        <div class="modal-content">
+            <h3>编辑导航 JSON</h3>
+            <textarea v-model="jsonData" style="width: 100%; height: 300px; margin-bottom: 10px;"></textarea>
+            <button @click="saveJson">保存</button>
+            <button @click="showModal = false">关闭</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    const { createApp, ref, computed, onMounted } = Vue;
+
+    createApp({
+        setup() {
+            // 响应式数据
+            const title = ref('WellCome Use GSearch');
+            const navData = ref([]);
+            const searchQuery = ref('');
+            const showModal = ref(false);
+            const jsonData = ref('');
+            const clickCount = ref(0);
+            let clickTimer = null;
+
+            // 计算属性：根据搜索框内容过滤卡片
+            const filteredCards = computed(() => {
+                const query = searchQuery.value.toLowerCase();
+                return navData.value.filter(item => item.name.toLowerCase().includes(query));
+            });
+
+            // 方法：打开链接
+            const openLink = (url) => {
+                window.open(url, '_blank', 'noopener,noreferrer');
+            };
+
+            // 方法：加载导航数据
+            const loadNavData = async () => {
+                try {
+                    const res = await fetch('/nav');
+                    navData.value = await res.json();
+                } catch (err) {
+                    console.error('加载导航数据失败', err);
+                }
+            };
+
+            // 方法：处理标题点击，用于进入编辑模式
+            const handleTitleClick = async () => {
+                clickCount.value++;
+                clearTimeout(clickTimer);
+                clickTimer = setTimeout(() => clickCount.value = 0, 800);
+                if (clickCount.value >= 5) {
+                    clickCount.value = 0;
+                    const res = await fetch('/nav');
+                    jsonData.value = await res.text();
+                    showModal.value = true;
+                }
+            };
+
+            // 方法：保存 JSON
+            const saveJson = async () => {
+                let token = prompt("请输入密钥以保存：");
+                if (!token) {
+                    alert("密钥不能为空！");
+                    return;
+                }
+
+                try {
+                    const response = await fetch('pwd.txt');
+                    if (!response.ok) {
+                        throw new Error('pwd.txt file not found');
+                    }
+                    const encryptedText = await response.text();
+                    const pwd = decrypt(encryptedText.trim(), token);
+
+                    if (pwd !== token) {
+                        alert("认证失败！");
+                    } else {
+                        await fetch('/nav', {
+                            method: 'POST',
+                            headers: {'Content-Type': 'application/json'},
+                            body: jsonData.value
+                        });
+                        alert('已保存');
+                        showModal.value = false;
+                        loadNavData();
+                    }
+                } catch (err) {
+                    alert("认证过程出错或文件未找到");
+                    console.error(err);
+                }
+            };
+
+            // 工具函数：DES 解密（保留原函数）
+            function hexStr2ByteArr(hexStr) {
+                let bytes = [];
+                for (let i = 0; i < hexStr.length; i += 2) {
+                    bytes.push(parseInt(hexStr.substr(i, 2), 16));
+                }
+                return new Uint8Array(bytes);
+            }
+            function getKey(keyStr) {
+                let keyBytes = CryptoJS.enc.Utf8.parse(keyStr);
+                return CryptoJS.lib.WordArray.create(keyBytes.words.slice(0, 2));
+            }
+            function decrypt(encryptedText, key) {
+                let encryptedBytes = hexStr2ByteArr(encryptedText);
+                let encryptedWordArray = CryptoJS.lib.WordArray.create(encryptedBytes);
+                let decrypted = CryptoJS.DES.decrypt({ ciphertext: encryptedWordArray }, getKey(key), {
+                    mode: CryptoJS.mode.ECB,
+                    padding: CryptoJS.pad.Pkcs7,
+                });
+                return decrypted.toString(CryptoJS.enc.Utf8);
+            }
+
+            // 生命周期钩子：组件挂载时加载数据
+            onMounted(() => {
+                loadNavData();
+                document.getElementById('searchBox').focus();
+            });
+
+            return {
+                title,
+                navData,
+                searchQuery,
+                showModal,
+                jsonData,
+                filteredCards,
+                openLink,
+                handleTitleClick,
+                saveJson
+            };
+        }
+    }).mount('#app');
+</script>
+</body>
+</html>
