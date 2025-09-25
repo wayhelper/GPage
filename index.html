@@ -127,25 +127,21 @@
             }
             fetch('pwd.txt')
                 .then(response => response.text())
-                .then(async text => {
+                .then(text => {
                     let pwd = decrypt(text.trim(), token);
-                    if (pwd === token) {
-                        // 认证成功
-                        await fetch('/nav', {
-                            method: 'POST',
-                            headers: {'Content-Type': 'application/json'},
-                            body: textarea.value
-                        });
-                        alert('已保存');
-                        modal.style.display = 'none';
-                        loadNavData();
-                    } else {
-                        alert("认证失败！");
-                    }
+                    if (pwd !== token) {alert("认证失败！");}
                 })
                 .catch(error => {
                     alert("认证过程出错");
                 });
+            await fetch('/nav', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: textarea.value
+            });
+            alert('已保存');
+            modal.style.display = 'none';
+            loadNavData();
         });
 
         closeBtn.addEventListener('click', () => {
