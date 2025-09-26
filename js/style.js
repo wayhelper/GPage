@@ -40,10 +40,8 @@ function renderCards(data) {
 // =================== 更新点击率 ===================
 async function updateClickRate(item) {
     // 按点击量排序
-    let foundItem = navData.find(navItem => navItem.name === item.name);
-    if (foundItem) {
-        foundItem.clicks = item.clicks;
-    }
+    navData = navData.filter(navItem => navItem.name !== item.name);
+    navData.push(foundItem);
     navData.sort((a, b) => b.clicks - a.clicks);
     await fetch('/nav', {
         method: 'POST',
