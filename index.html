@@ -4,7 +4,6 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>GSearch</title>
-        <link rel="stylesheet" href="./css/style.css">
         <script src="./js/crypto-js.min.js"></script>
     </head>
     <body>
@@ -12,7 +11,15 @@
         <h1>GSearch</h1>
         <input type="text" id="searchBox" placeholder="Search..." oninput="filterCards()">
         <div class="card-container" id="navCards"></div>
-        <script src="./js/style.js?v=<?=Date.now()?"></script>
+        <script>
+            const script = document.createElement('script');
+            script.src = './js/style.js?v=' + Date.now();
+            document.head.appendChild(script);
+            const link = document.createElement('link');
+            link.rel = 'stylesheet';
+            link.href = './css/style.css?v=' + Date.now(); // 时间戳防缓存
+            document.head.appendChild(link);
+        </script>
 
     </body>
 </html>
