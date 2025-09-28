@@ -1,88 +1,8 @@
-/*
-!* 通用样式 *!
-body {
-    font-family: 'Arial', sans-serif;
-    margin: 0;
-    padding: 5vh 2vw;
-    background: #ab6fbb;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-!* 标题 *!
-h1 {
-    font-size: 2rem;
-    text-align: center;
-    margin-bottom: 20px;
-    cursor: pointer;
-    animation: textColorChange 5s infinite linear;
-}
-
-!* 动态文字颜色动画 *!
-@keyframes textColorChange {
-    0% { color: #FF6F61; }
-    25% { color: #6B5B95; }
-    50% { color: #88B04B; }
-    75% { color: #F7CAC9; }
-    100% { color: #FF6F61; }
-}
-
-!* 搜索框 *!
-#searchBox {
-    width: 80%;
-    max-width: 600px;
-    padding: 10px 15px;
-    font-size: 1rem;
-    border: 2px solid #ccc;
-    border-radius: 8px;
-    margin-bottom: 30px;
-}
-
-!* 卡片容器 *!
-.card-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 20px;
-    width: 90%;
-    max-width: 1000px;
-}
-
-!* 卡片 *!
-.card {
-    background: #ffffff;
-    padding: 20px;
-    border-radius: 10px;
-    text-align: center;
-    font-weight: bold;
-    font-size: 1.1rem;
-    cursor: pointer;
-    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
-    animation: cardTextColorChange 5s infinite linear;
-}
-
-!* 卡片动态文字颜色动画 *!
-@keyframes cardTextColorChange {
-    0% { color: #333333; }
-    50% { color: #FF6F61; }
-    100% { color: #333333; }
-}
-
-!* 卡片悬停效果 *!
-.card:hover {
-    background: #FF6F61;
-    color: #ffffff;
-    transform: scale(1.05);
-    animation: none;
-}
-*/
 /* 通用样式 */
 body {
     font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 5vh 2vw;
-    /* 更柔和的背景色 */
     background: #f0f2f5;
     display: flex;
     flex-direction: column;
@@ -91,43 +11,37 @@ body {
 
 /* 标题 */
 h1 {
-    font-size: 2.5rem; /* 稍微放大标题 */
-    font-weight: 300; /* 减轻字重，更现代 */
+    font-size: 2.5rem;
+    font-weight: 300;
     text-align: center;
     margin-bottom: 30px;
-    color: #333; /* 统一标题颜色 */
-    /* 移除动画，使用更简单的渐变或静态颜色 */
-    /* animation: textColorChange 5s infinite linear; */
+    color: #333;
 }
-
-/* 动态文字颜色动画 - 移除或替换 */
-/* @keyframes textColorChange { ... } */
 
 /* 搜索框 */
 #searchBox {
     width: 80%;
     max-width: 600px;
-    padding: 12px 20px; /* 增加内边距 */
+    padding: 12px 20px;
     font-size: 1rem;
-    border: 1px solid #ddd; /* 更细的边框 */
-    border-radius: 25px; /* 增加圆角，更柔和 */
+    border: 1px solid #ddd;
+    border-radius: 25px;
     margin-bottom: 40px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* 添加阴影，增加层次感 */
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
     transition: all 0.3s ease;
 }
 
 #searchBox:focus {
     outline: none;
-    border-color: #007bff; /* 聚焦时改变边框颜色 */
+    border-color: #007bff;
     box-shadow: 0 4px 10px rgba(0, 123, 255, 0.2);
 }
 
 /* 卡片容器 */
 .card-container {
     display: grid;
-    /* 调整卡片大小和列数，让布局更灵活 */
     grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-    gap: 15px; /* 调整间距 */
+    gap: 15px;
     width: 90%;
     max-width: 1200px;
 }
@@ -138,23 +52,30 @@ h1 {
     padding: 20px;
     border-radius: 12px;
     text-align: center;
-    font-weight: normal; /* 减轻字重 */
+    font-weight: normal;
     font-size: 1rem;
     color: #555;
     cursor: pointer;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
-    /* 移除动画 */
-    /* animation: cardTextColorChange 5s infinite linear; */
+    /* 保留并调整卡片文字颜色动画 */
+    animation: cardTextColorChange 6s infinite linear;
 }
 
-/* 卡片动态文字颜色动画 - 移除或替换 */
-/* @keyframes cardTextColorChange { ... } */
+/* 卡片动态文字颜色动画 */
+@keyframes cardTextColorChange {
+    0% { color: #555; }
+    25% { color: #007bff; }
+    50% { color: #28a745; }
+    75% { color: #fd7e14; }
+    100% { color: #555; }
+}
 
 /* 卡片悬停效果 */
 .card:hover {
-    background: #007bff; /* 悬停时使用蓝色 */
+    background: #007bff;
     color: #ffffff;
-    transform: translateY(-5px); /* 向上轻微移动，增加动感 */
+    transform: translateY(-5px);
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+    animation: none; /* 悬停时停止动画 */
 }
