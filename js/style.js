@@ -67,24 +67,41 @@ function handleSearchEnter(event) {
         const query = document.getElementById('searchBox').value.trim();
 
         if (query) {
-            // 使用当前浏览器默认引擎进行搜索
-            // 'https://www.google.com/search?q=' 是一个常用的做法
-            // 但最通用的方式是直接使用 window.location.href
-            // 浏览器会自动处理并跳转到默认的搜索页面
-            // 为了确保搜索能工作，我们使用 Google 作为示例，您可以根据需要修改。
-
-            // 方案一：使用 Google 搜索（推荐，兼容性好）
-            const searchUrl = `https://www.google.com/search?q=${encodeURIComponent(query)}`;
+            const searchUrl = getSearchEngineUrl(query);
             window.open(searchUrl, '_blank', 'noopener,noreferrer');
-
-            // 方案二：如果想使用浏览器默认的搜索行为（不太可靠，取决于浏览器的配置）
-            // 很多浏览器会将不完整的 URL 视为搜索，但最好使用明确的 URL 模板。
-            // window.location.href = query;
 
         } else {
             // 如果搜索框为空，可以保持不变或做其他提示
             filterCards(); // 仍然执行原有的过滤操作
         }
+    }
+}
+// =================== 工具函数 ===================
+
+// ... (hexStr2ByteArr, getKey, decrypt 等原有工具函数保持不变)
+
+/**
+ * 根据当前浏览器返回不同的搜索 URL
+ * @param {string} query 搜索关键词
+ * @returns {string} 完整的搜索 URL
+ */
+function getSearchEngineUrl(query) {
+    const userAgent = navigator.userAgent;
+    const encodedQuery = encodeURIComponent(query);
+
+    // 优先判断 Edge 浏览器 (标识符通常是 "Edg" 或 "Edg/" 而非 "Edge")
+    if (userAgent.includes('Edg')) {
+        // Edge 浏览器，返回 Bing 搜索 URL
+        return `https://www.bing.com/search?q=${encodedQuery}`;
+    }
+    // 其次判断 Chrome 浏览器 (User Agent 中通常包含 "Chrome" 但不包含 "Edg")
+    else if (userAgent.includes('Chrome')) {
+        // Chrome 浏览器，返回 Google 搜索 URL
+        return `https://www.google.com/search?q=${encodedQuery}`;
+    }
+    // 其他浏览器（如 Firefox, Safari 等），默认返回 Google
+    else {
+        return `https://www.google.com/search?q=${encodedQuery}`;
     }
 }
 
