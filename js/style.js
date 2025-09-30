@@ -2,6 +2,8 @@
 let navData = [];
 let clickCount = 0;
 let clickTimer;
+let modal;      // 新增：声明全局变量
+let textarea;   // 新增：声明全局变量
 
 // ================== 加载 JSON 数据 ===============
 async function loadNavData() {
@@ -98,8 +100,6 @@ function getSearchEngineUrl(query) {
     }
 }
 
-const { modal, textarea } = initModal();
-
 // =================== 创建隐藏弹窗（编辑 JSON） ===================
 function initModal() {
     const modal = document.getElementById('modal');
@@ -167,6 +167,9 @@ document.querySelector('h1').addEventListener('click', async () => {
 
 // =================== 页面加载事件 ===================
 window.addEventListener('DOMContentLoaded', () => {
+    const result = initModal();
+    modal = result.modal;      // 给全局 modal 赋值
+    textarea = result.textarea;  // 给全局 textarea 赋值
     loadNavData();
     // =================== 初始化弹窗 ===================
     document.getElementById('searchBox').focus();
