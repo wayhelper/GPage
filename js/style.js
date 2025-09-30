@@ -1,9 +1,5 @@
 // =================== 全局变量 ===================
 let navData = [];
-let clickCount = 0;
-let clickTimer;
-let modal;      // 新增：声明全局变量
-let textarea;   // 新增：声明全局变量
 
 // ================== 加载 JSON 数据 ===============
 async function loadNavData() {
@@ -100,76 +96,8 @@ function getSearchEngineUrl(query) {
     }
 }
 
-// =================== 创建隐藏弹窗（编辑 JSON） ===================
-function initModal() {
-    const modal = document.getElementById('modal');
-    const textarea = modal.querySelector('textarea');
-    const saveBtn = modal.querySelector('.save-btn');
-    const closeBtn = modal.querySelector('.close-btn');
-
-    // 保存逻辑
-    saveBtn.addEventListener('click', async () => {
-        let token = prompt("请输入密钥以保存：");
-        if (!token) {
-            alert("密钥不能为空！");
-            return;
-        }
-        fetch('pwd.txt')
-            .then(response => response.text())
-            .then(async text => {
-                let pwd = decrypt(text.trim(), token);
-                if (pwd !== token) {
-                    alert("认证失败！");
-                } else {
-                    await fetch('/nav', {
-                        method: 'POST',
-                        headers: {'Content-Type': 'application/json'},
-                        body: textarea.value
-                    });
-                    alert('已保存');
-                    closeModal();
-                }
-            })
-            .catch(() => {
-                alert("认证过程出错");
-            });
-        loadNavData();
-    });
-
-    // 关闭逻辑
-    closeBtn.addEventListener('click', closeModal);
-
-    return { modal, textarea };
-}
-
-function openModal() {
-    document.getElementById('modal').style.display = 'flex';
-}
-
-function closeModal() {
-    document.getElementById('modal').style.display = 'none';
-}
-
-
-// =================== 标题点击（触发编辑模式） ===================
-document.querySelector('h1').addEventListener('click', async () => {
-    clickCount++;
-    clearTimeout(clickTimer);
-    clickTimer = setTimeout(() => clickCount = 0, 800);
-    if (clickCount >= 5) {
-        clickCount = 0;
-        const res = await fetch('/nav');
-        const json = await res.text();
-        textarea.value = json;
-        openModal();
-    }
-});
-
 // =================== 页面加载事件 ===================
 window.addEventListener('DOMContentLoaded', () => {
-    const result = initModal();
-    modal = result.modal;      // 给全局 modal 赋值
-    textarea = result.textarea;  // 给全局 textarea 赋值
     loadNavData();
     // =================== 初始化弹窗 ===================
     document.getElementById('searchBox').focus();
