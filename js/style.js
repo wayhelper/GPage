@@ -3,7 +3,7 @@ let navData = [];
 let clickCount = 0;
 let clickTimer;
 
-// =================== 加载 JSON 数据 ===================
+// ================== 加载 JSON 数据 ===============
 async function loadNavData() {
     try {
         const res = await fetch('/nav');
@@ -76,15 +76,8 @@ function handleSearchEnter(event) {
         }
     }
 }
-// =================== 工具函数 ===================
 
-// ... (hexStr2ByteArr, getKey, decrypt 等原有工具函数保持不变)
-
-/**
- * 根据当前浏览器返回不同的搜索 URL
- * @param {string} query 搜索关键词
- * @returns {string} 完整的搜索 URL
- */
+// =================== 根据当前浏览器返回不同的搜索 URL ===================
 function getSearchEngineUrl(query) {
     const userAgent = navigator.userAgent;
     const encodedQuery = encodeURIComponent(query);
@@ -101,7 +94,7 @@ function getSearchEngineUrl(query) {
     }
     // 其他浏览器（如 Firefox, Safari 等），默认返回 Google
     else {
-        return `https://www.google.com/search?q=${encodedQuery}`;
+        return `https://www.bing.com/search?q=${encodedQuery}`;
     }
 }
 
@@ -230,11 +223,7 @@ window.addEventListener('DOMContentLoaded', () => {
 });
 
 // =================== 工具函数 ===================
-/**
- * 将十六进制字符串转换为字节数组
- * @param {string} hexStr
- * @returns {Uint8Array}
- */
+
 function hexStr2ByteArr(hexStr) {
     let bytes = [];
     for (let i = 0; i < hexStr.length; i += 2) {
@@ -243,22 +232,11 @@ function hexStr2ByteArr(hexStr) {
     return new Uint8Array(bytes);
 }
 
-/**
- * 生成 8 字节 DES 密钥
- * @param {string} keyStr
- * @returns {CryptoJS.lib.WordArray}
- */
 function getKey(keyStr) {
     let keyBytes = CryptoJS.enc.Utf8.parse(keyStr);
     return CryptoJS.lib.WordArray.create(keyBytes.words.slice(0, 2)); // 取前 8 字节
 }
 
-/**
- * DES 解密
- * @param {string} encryptedText 需要解密的十六进制字符串
- * @param {string} key 解密密钥
- * @returns {string} 解密后的字符串
- */
 function decrypt(encryptedText, key) {
     let encryptedBytes = hexStr2ByteArr(encryptedText);
     let encryptedWordArray = CryptoJS.lib.WordArray.create(encryptedBytes);
