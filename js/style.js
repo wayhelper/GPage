@@ -13,28 +13,6 @@ async function loadNavData() {
 }
 
 // =================== 渲染卡片 ===================
-// function renderCards(data) {
-//     const container = document.getElementById('navCards');
-//     container.innerHTML = '';
-//     data.forEach(item => {
-//         const card = document.createElement('div');
-//         card.className = 'card';
-//         card.textContent = item.name;
-//         // 打开新窗口（安全）并增加点击量
-//         card.onclick = async () => {
-//             // 点击量 +1
-//             item.clicks++;
-//
-//             // 调用保存方法，将 navData 更新到后端
-//             await updateClickRate(item);
-//
-//             // 打开链接
-//             window.open(item.url, '_blank', 'noopener,noreferrer');
-//         };
-//         container.appendChild(card);
-//     });
-// }
-// =================== 渲染卡片 ===================
 function renderCards(data) {
     const container = document.getElementById('navCards');
     container.innerHTML = '';
@@ -50,7 +28,7 @@ function renderCards(data) {
         const clicksElement = document.createElement('div');
         clicksElement.className = 'card-clicks';
         // 假设 item 中有 clicks 属性，如果它不存在或不是数字，则显示 0
-        clicksElement.textContent = `🔥${item.clicks || 0}`;
+        clicksElement.textContent = `${item.clicks || 0}`;
 
         // 将名称和点击率元素添加到卡片中
         card.appendChild(nameElement);
@@ -62,7 +40,7 @@ function renderCards(data) {
             item.clicks = (item.clicks || 0) + 1;
 
             // 实时更新卡片上的点击率显示
-            clicksElement.textContent = `🔥${item.clicks}`;
+            clicksElement.textContent = `${item.clicks}`;
 
             // 调用保存方法，将 navData 更新到后端
             await updateClickRate(item);
