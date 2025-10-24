@@ -58,7 +58,7 @@ h1 {
 /* 卡片 */
 .card {
     background: #ffffff;
-    padding: 20px;
+    padding: 20px 10px 20px 10px; /* 调整内边距，给点击率留出空间 */
     border-radius: 12px;
     text-align: center;
     font-weight: normal;
@@ -67,8 +67,35 @@ h1 {
     cursor: pointer;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
-    /* 保留并调整卡片文字颜色动画 */
     animation: cardTextColorChange 6s infinite linear;
+
+    /* 新增：设置相对定位，用于子元素的绝对定位 */
+    position: relative;
+
+    /* 使用 flex 布局垂直居中文本，防止文本被点击率覆盖 */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 80px; /* 确保卡片有足够高度 */
+}
+
+/* 卡片名称样式 (新增) */
+.card-name {
+    font-weight: bold;
+    font-size: 1rem;
+    margin: auto; /* 确保名称在卡片中心 */
+}
+
+/* 点击率显示样式 (新增) */
+.card-clicks {
+    position: absolute; /* 绝对定位 */
+    top: 5px; /* 距离顶部 */
+    right: 10px; /* 距离右侧 */
+    font-size: 0.75rem; /* 小字号 */
+    font-weight: 300;
+    color: #999; /* 浅灰色 */
+    transition: color 0.3s ease;
 }
 
 /* 卡片动态文字颜色动画 */
