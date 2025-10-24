@@ -50,7 +50,7 @@ function renderCards(data) {
         const clicksElement = document.createElement('div');
         clicksElement.className = 'card-clicks';
         // 假设 item 中有 clicks 属性，如果它不存在或不是数字，则显示 0
-        clicksElement.textContent = `点击: ${item.clicks || 0}`;
+        clicksElement.textContent = `🔥${item.clicks || 0}`;
 
         // 将名称和点击率元素添加到卡片中
         card.appendChild(nameElement);
@@ -62,7 +62,7 @@ function renderCards(data) {
             item.clicks = (item.clicks || 0) + 1;
 
             // 实时更新卡片上的点击率显示
-            clicksElement.textContent = `点击: ${item.clicks}`;
+            clicksElement.textContent = `🔥${item.clicks}`;
 
             // 调用保存方法，将 navData 更新到后端
             await updateClickRate(item);
