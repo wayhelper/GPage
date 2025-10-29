@@ -122,23 +122,6 @@ window.addEventListener('DOMContentLoaded', () => {
     searchBox.addEventListener('keydown', handleSearchEnter);
 });
 
-// =================== 背景音乐自动播放 ===================
-window.addEventListener('load', () => {
-    const bgm = document.getElementById('bgm');
-
-    // 尝试自动播放
-    bgm.play().then(() => {
-        // 播放成功，尝试取消静音
-        bgm.muted = false;
-        console.log("背景音乐已自动播放 🎵");
-    }).catch(err => {
-        console.warn("自动播放被浏览器拦截，当前为静音模式", err);
-        // 如果失败，维持静音播放（用户之后点击页面可能自动恢复）
-        bgm.muted = true;
-        bgm.play();
-    });
-});
-
 // =================== 工具函数 ===================
 
 function hexStr2ByteArr(hexStr) {
