@@ -1,5 +1,6 @@
 // =================== 全局变量 ===================
 let navData = [];
+let startTime = new Date("2024-01-01 00:00:00");
 
 // ================== 加载 JSON 数据 ===============
 async function loadNavData() {
@@ -11,6 +12,9 @@ async function loadNavData() {
         console.error('加载导航数据失败', err);
     }
 }
+
+//显示网站运行时间
+getWebsiteRunTime();
 
 // =================== 渲染卡片 ===================
 function renderCards(data) {
@@ -143,4 +147,14 @@ function decrypt(encryptedText, key) {
         padding: CryptoJS.pad.Pkcs7,
     });
     return decrypted.toString(CryptoJS.enc.Utf8);
+}
+function getWebsiteRunTime() {
+    const now = new Date();
+    const diff = now - startTime; // 毫秒差
+
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+    const minutes = Math.floor((diff / (1000 * 60)) % 60);
+    const seconds = Math.floor((diff / 1000) % 60);
+    console.log(`本站已运行：${days}天 ${hours}小时 ${minutes}分 ${seconds}秒`)
 }
