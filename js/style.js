@@ -7,7 +7,7 @@ async function loadNavData() {
     try {
         const res = await fetch('/nav');
         navData = await res.json();
-        renderCards(navData);
+        renderCards(navData.slice(0, 10));
     } catch (err) {
         console.error('加载导航数据失败', err);
     }
