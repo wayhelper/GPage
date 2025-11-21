@@ -5,19 +5,28 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>WaySearch</title>
         <link rel="shortcut icon" type="image/x-icon" href="./css/favicon.ico">
-        <link rel="stylesheet" href="./css/style.css?v=202511201656">
-        <script src="./js/style.js?v=202511201656"></script>
+        <link rel="stylesheet" href="./css/style.css?v=202511210923">
+        <link rel="stylesheet" href="./css/APlayer.min.css">
+        <script src="./js/style.js?v=202511210923"></script>
+        <script src="./js/blog_APlayer.min.js"></script>
+        <script src="./js/blog_Meting.min.js"></script>
     </head>
     <body>
         <h1>WaySearch</h1>
         <input type="text" id="searchBox" placeholder="Search..." oninput="filterCards()">
         <div class="card-container" id="navCards"></div>
+        <div id="aplayer"  data-id="6828041575" data-server="netease" data-type="playlist" data-fixed="true" data-listfolded="true" data-order="random" data-theme="#F58EA8"></div>
+        <footer>
+            <div style="text-align:center; margin-top: 20px; padding-top: 6px; border-top: 1px solid #444;">
+                © 2025 way's navigation website. All rights reserved. Email: heyjingway@gmail.com
+            </div>
+        </footer>
+
         <!--背景彩带-->
         <script defer="defer" id="ribbon" src="./js/canvas-ribbon.min.js" size="100" alpha="0.6" zIndex="-1" mobile="false" data-click="true"></script>
         <!--鼠标吸引线条特效-->
         <script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="150" mobile="false" src="./js/canvas-nest.min.js"></script>
         <script src="./js/activate-power-mode.min.js"></script>
         <script>POWERMODE.colorful = true;POWERMODE.shake = true;POWERMODE.mobile = false;document.body.addEventListener('input', POWERMODE);</script>
-        <script src="https://fastly.jsdelivr.net/npm/live2d-widgets@1.0.0/dist/autoload.js"></script>
     </body>
 </html>
