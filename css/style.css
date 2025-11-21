@@ -112,11 +112,7 @@ h1 {
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
     animation: none; /* 悬停时停止动画 */
 }
-/*板娘*/
-#live2dcanvas {
-    border: 0 !important;
-}
-
+/*底部信息*/
 footer {
     position: fixed;
     bottom: 0;
