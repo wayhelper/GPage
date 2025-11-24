@@ -72,7 +72,12 @@ async function updateClickRate(item) {
 function filterCards() {
     const query = document.getElementById('searchBox').value.toLowerCase();
     const filtered = navData.filter(item => item.name.toLowerCase().includes(query));
-    renderCards(filtered.slice(0, 6));
+    if (query==="/") {
+        renderCards(navData);
+    } else {
+        renderCards(filtered.slice(0, 6));
+    }
+
 }
 
 // =================== 处理回车搜索 ===================
