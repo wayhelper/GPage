@@ -120,5 +120,6 @@ function auth(auth){
     } else {
         localStorage.setItem('token', '');
         token = '';
+        alert('已清除身份验证信息');
     }
 }
