@@ -1,6 +1,6 @@
 // =================== 全局变量 ===================
 let navData = [];
-let token = '';
+let token = localStorage.getItem('token') || '';
 let startTime = new Date("2024-01-01 00:00:00");
 
 // ================== 加载 JSON 数据 ===============
@@ -139,15 +139,22 @@ function getWebsiteRunTime() {
     console.log(`本站已运行：${days}天 ${hours}小时 ${minutes}分 ${seconds}秒`)
 }
 // =================== 身份验证 ===================
-function auth(){
-    token = localStorage.getItem('token') || '';
-    if (token==='') {
-        token =prompt('请输入身份令牌（token）：');
-        if (token) {
-            localStorage.setItem('token', token);
+function auth(auth){
+    if (auth) {
+        token = localStorage.getItem('token') || '';
+        if (token==='') {
+            token =prompt('请输入身份令牌（token）：');
+            if (token) {
+                localStorage.setItem('token', token);
+            } else {
+                alert('未提供令牌，某些功能可能无法使用。');
+                localStorage.setItem('token', '');
+            }
         } else {
-            alert('未提供令牌，某些功能可能无法使用。');
-            localStorage.setItem('token', 'default');
+            token = localStorage.getItem('token');
         }
+    } else {
+        localStorage.setItem('token', '');
+        token = '';
     }
 }
