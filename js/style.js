@@ -144,12 +144,7 @@ function auth(auth){
         token = localStorage.getItem('token') || '';
         if (token==='') {
             token =prompt('请输入身份令牌（token）：');
-            if (token) {
-                localStorage.setItem('token', token);
-            } else {
-                alert('未提供令牌，某些功能可能无法使用。');
-                localStorage.setItem('token', '');
-            }
+            localStorage.setItem('token', token);
         } else {
             token = localStorage.getItem('token');
         }
