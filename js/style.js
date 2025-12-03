@@ -65,7 +65,7 @@ function filterCards() {
 function exactSearchByName(name) {
     const filtered = navData.filter(item => item.name.toLowerCase() === name.toLowerCase());
     if (filtered.length > 0) {
-        return filtered[0];
+        return filtered;
     }
 }
 
