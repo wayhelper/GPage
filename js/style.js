@@ -33,6 +33,10 @@ function renderCards(data) {
             item.clicks = (item.clicks || 0) + 1;
             clicksElement.textContent = `${item.clicks}`;
             await updateClickRate(item);
+            if (item.url === 'add') {
+                //执行表单提交
+                submitNav();
+            }
             window.open(item.url, '_blank', 'noopener,noreferrer');
         };
         container.appendChild(card);
@@ -54,7 +58,7 @@ async function updateClickRate(item) {
 function filterCards() {
     const query = document.getElementById('searchBox').value.toLowerCase();
     const filtered = navData.filter(item => item.name.toLowerCase().includes(query));
-    query === "/" ? renderCards(navData) : renderCards(filtered.slice(0, 6));
+    query === "/" ? renderCards(navData) : renderCards(filtered.slice(0, 6)===[] ? navData[navData.length-1] : filtered.slice(0, 6));
 }
 
 // =================== 处理回车搜索 ===================
@@ -82,6 +86,10 @@ function getSearchEngineUrl(query) {
     } else {
         return `https://www.bing.com/search?q=${encodedQuery}`;
     }
+}
+// =================== 提交新收藏 ===================
+function submitNav(){
+    alert("add nav function is not implemented yet.");
 }
 
 // =================== 页面加载事件 ===================
