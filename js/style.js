@@ -108,7 +108,7 @@ function closeModal() {
 }
 
 // 点击提交
-document.getElementById("submitBtn").onclick = () => {
+/*document.getElementById("submitBtn").onclick = () => {
     const data = {
         name: document.getElementById("nameInput").value,
         url: document.getElementById("urlInput").value
@@ -117,12 +117,12 @@ document.getElementById("submitBtn").onclick = () => {
     console.log("提交:", data);
 
     closeModal();
-};
+};*/
 
 // 点击遮罩关闭
-document.getElementById("myModal").onclick = (e) => {
+/*document.getElementById("myModal").onclick = (e) => {
     if (e.target.id === "myModal") closeModal();
-};
+};*/
 
 // =================== 页面加载事件 ===================
 window.addEventListener('DOMContentLoaded', () => {
