@@ -106,23 +106,20 @@ function openModal() {
 function closeModal() {
     document.getElementById("myModal").style.display = "none";
 }
-
-// 点击提交
-/*document.getElementById("submitBtn").onclick = () => {
+function submitNewNav() {
     const data = {
         name: document.getElementById("nameInput").value,
-        url: document.getElementById("urlInput").value
+        url: document.getElementById("urlInput").value,
+        clicks:0
     };
-
-    console.log("提交:", data);
-
+    navData.push(data);
+    fetch('/nav', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json','token': token},
+        body: JSON.stringify(navData)
+    });
     closeModal();
-};*/
-
-// 点击遮罩关闭
-/*document.getElementById("myModal").onclick = (e) => {
-    if (e.target.id === "myModal") closeModal();
-};*/
+}
 
 // =================== 页面加载事件 ===================
 window.addEventListener('DOMContentLoaded', () => {
