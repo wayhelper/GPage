@@ -216,7 +216,7 @@ footer {
 
 /* 输入框 */
 .modal-box input {
-    width: 100%;
+    width: 70%;
     padding: 10px 12px;
     border: 1px solid #d2d2d7;
     border-radius: 8px;
@@ -232,7 +232,6 @@ footer {
 /* 按钮 */
 .submit-btn {
     width: 50%;
-    padding: 10px 12px;
     background: #007aff;
     color: #fff;
     border: none;
