@@ -112,6 +112,11 @@ function submitNewNav() {
         url: document.getElementById("urlInput").value,
         clicks:0
     };
+    if (data.name === '' || data.url === '') {
+        alert('please complete the form');
+        closeModal();
+        return;
+    }
     navData.push(data);
     fetch('/nav', {
         method: 'POST',
