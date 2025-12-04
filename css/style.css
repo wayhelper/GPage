@@ -240,7 +240,10 @@ footer {
     font-size: 15px;
     cursor: pointer;
     transition: background .2s;
+    display: block;
+    margin: 0 auto;
 }
+
 
 .submit-btn:hover {
     background: #0066d8;
