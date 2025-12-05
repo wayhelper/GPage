@@ -20,6 +20,11 @@
 > 搜索功能，按回车根据当前浏览器引擎执行搜索全网资源
 <img width="1920" height="919" alt="image" src="https://github.com/user-attachments/assets/d10bca11-c139-45e6-9041-69060e2eccca" />
 
+## 部署教程
 
+> 1. 本项目完全依赖赛博活佛的K-V和Page功能。
+> 2. 请fork本仓库自行部署到cloudflare的Page中。
+> 3. 在K-V中新建GPage实例，进入实例新建auth键值。建navJson，vlaue可以参考本项目data目录下的navJson.json结构。
+> 4. 定义完成即可访问page页
 
 
