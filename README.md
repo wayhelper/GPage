@@ -1,1 +1,9 @@
-<img width="1623" height="844" alt="image" src="https://github.com/user-attachments/assets/24a17761-e7b3-4dae-bb03-5ae025359aad" />
+
+---
+
+# 🚀 WaySearch
+
+## 概览
+
+**WaySearch** 是一个简洁、高效、个性化的搜索与导航门户，旨在将您最常用的工具和信息源聚合到一个优雅且快速的界面。告别在多个浏览器收藏中切换的烦恼，让您的搜索旅程更加直观和愉悦。
+---
