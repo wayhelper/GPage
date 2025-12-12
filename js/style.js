@@ -26,7 +26,7 @@ function renderCards(data) {
         nameElement.textContent = item.name;
         const clicksElement = document.createElement('div');
         clicksElement.className = 'card-clicks';
-        clicksElement.textContent = `${item.clicks || 0}`;
+        clicksElement.textContent = `${item.clicks || -1}`;
         card.appendChild(nameElement);
         card.appendChild(clicksElement);
         card.onclick = async () => {
