@@ -24,7 +24,7 @@
 
 > 1. 本项目完全依赖赛博活佛的K-V和Page功能。
 > 2. 请fork本仓库自行部署到cloudflare的Page中。
-> 3. 在K-V中新建GPage实例，进入实例新建auth键值。建navJson，vlaue可以参考本项目data目录下的navJson.json结构。
+> 3. 在K-V中新建GPage实例，进入实例新建auth键值，vlaue可以参考本项目data目录下的navJson.json结构。
 > 4. 定义完成即可访问page页
 
 
