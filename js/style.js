@@ -30,13 +30,13 @@ function renderCards(data) {
         card.appendChild(nameElement);
         card.appendChild(clicksElement);
         card.onclick = async () => {
-            item.clicks = (item.clicks || 0) + 1;
-            clicksElement.textContent = `${item.clicks}`;
             if (item.url === 'add') {
                 //执行表单提交
                 openModal();
                 return;
             }
+            item.clicks = (item.clicks || 0) + 1;
+            clicksElement.textContent = `${item.clicks}`;
             await updateClickRate(item);
             window.open(item.url, '_blank', 'noopener,noreferrer');
         };
