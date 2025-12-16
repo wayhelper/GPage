@@ -52,7 +52,7 @@ function renderCards(data) {
                 openModal();
                 return;
             }
-            item.clicks = (item.clicks || 0) + 1;
+            item.clicks = item.clicks===-1 ? -1 : (item.clicks || 0) + 1;
             clicksElement.textContent = `${item.clicks}`;
             await updateClickRate(item);
             window.open(item.url, '_blank', 'noopener,noreferrer');
