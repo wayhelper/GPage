@@ -42,7 +42,7 @@ function renderCards(data) {
         nameElement.textContent = item.name;
         const clicksElement = document.createElement('div');
         clicksElement.className = 'card-clicks';
-        clicksElement.textContent = `${item.clicks || -1}`;
+        clicksElement.textContent = `${item.clicks || 0}`;
         card.appendChild(nameElement);
         card.appendChild(clicksElement);
         //左键打开
@@ -133,7 +133,7 @@ function submitNewNav() {
     const data = {
         name: document.getElementById("nameInput").value,
         url: document.getElementById("urlInput").value,
-        clicks:1
+        clicks:0
     };
     if (data.name === '' || data.url === '') {
         alert('please complete the form');
