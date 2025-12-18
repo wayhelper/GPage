@@ -140,6 +140,13 @@ function submitNewNav() {
         closeModal();
         return;
     }
+    // 去重逻辑
+    const exists = navData.some(item => item.name.toLowerCase() === data.name.toLowerCase());
+    if (exists) {
+        alert('this card already exists');
+        closeModal();
+        return;
+    }
     navData.push(data);
     updateNavData(navData).then(r => closeModal());
     location.reload();
