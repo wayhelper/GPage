@@ -21,6 +21,9 @@
 > 新增收藏
 <img width="1920" height="919" alt="image" src="https://github.com/user-attachments/assets/a8c9452a-5e5b-437c-83a3-e62b7c586e4c" />
 
+> 删除收藏： 右键卡片可以选择删除该卡片
+<img width="1913" height="960" alt="image" src="https://github.com/user-attachments/assets/f0529213-b3ff-409b-90f4-24d2f3917987" />
+
 > 搜索功能，按回车根据当前浏览器引擎执行搜索全网资源
 <img width="1920" height="919" alt="image" src="https://github.com/user-attachments/assets/d10bca11-c139-45e6-9041-69060e2eccca" />
 
