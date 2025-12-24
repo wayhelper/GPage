@@ -2,52 +2,52 @@
   {
     "name": "ChatGPT",
     "url": "https://www.chatgpt.com/",
-    "clicks": 114
+    "clicks": 134
   },
   {
     "name": "GTool ",
     "url": "https://tool.alal.site",
-    "clicks": 100
+    "clicks": 104
   },
   {
     "name": "YouTube",
     "url": "https://www.youtube.com/",
-    "clicks": 87
-  },
-  {
-    "name": "Telegram",
-    "url": "https://web.telegram.org/k/",
-    "clicks": 65
+    "clicks": 96
   },
   {
     "name": "V2EX",
     "url": "https://www.v2ex.com",
-    "clicks": 62
+    "clicks": 81
   },
   {
-    "name": "GitHub",
-    "url": "https://github.com/jingbio",
-    "clicks": 58
+    "name": "Telegram",
+    "url": "https://web.telegram.org/k/",
+    "clicks": 77
   },
   {
     "name": "Spotify",
     "url": "https://open.spotify.com/",
-    "clicks": 48
+    "clicks": 50
   },
   {
     "name": "CloudFlare",
     "url": "https://dash.cloudflare.com/",
-    "clicks": 37
+    "clicks": 49
   },
   {
     "name": "BiliBili",
     "url": "https://www.bilibili.com/",
-    "clicks": 32
+    "clicks": 37
   },
   {
     "name": "Gemini",
     "url": "https://gemini.google.com/app",
-    "clicks": 30
+    "clicks": 34
+  },
+  {
+    "name": "ClawCloud",
+    "url": "https://us-east-1.run.claw.cloud",
+    "clicks": 23
   },
   {
     "name": "NodeSeek",
@@ -55,92 +55,13 @@
     "clicks": 19
   },
   {
-    "name": "DeepSeek",
-    "url": "https://chat.deepseek.com/",
-    "clicks": 13
-  },
-  {
-    "name": "ClawCloud",
-    "url": "https://us-east-1.run.claw.cloud",
-    "clicks": 11
-  },
-  {
     "name": "Gmail",
     "url": "https://mail.google.com",
-    "clicks": 10
-  },
-  {
-    "name": "PostMan",
-    "url": "https://www.postman.com/",
-    "clicks": 10
-  },
-  {
-    "name": "SpeedTest",
-    "url": "https://speed.cloudflare.com",
-    "clicks": 9
-  },
-  {
-    "name": "GoogleStore",
-    "url": "https://chromewebstore.google.com/",
-    "clicks": 8
-  },
-  {
-    "name": "GVideo",
-    "url": "https://v.alal.site",
-    "clicks": 7
-  },
-  {
-    "name": "IP",
-    "url": "https://ipv4.alal.site",
-    "clicks": 5
-  },
-  {
-    "name": "RackNerd",
-    "url": "https://www.racknerd.com/",
-    "clicks": 5
-  },
-  {
-    "name": "Twitter",
-    "url": "https://x.com/",
-    "clicks": 5
-  },
-  {
-    "name": "CLOUDCONE",
-    "url": "https://app.cloudcone.com",
-    "clicks": 4
-  },
-  {
-    "name": "Vercel",
-    "url": "https://vercel.com/guojingwei129s-projects",
-    "clicks": 4
-  },
-  {
-    "name": "电脑系统下载",
-    "url": "https://msdn.itellyou.cn/",
-    "clicks": 3
-  },
-  {
-    "name": "Excalidraw",
-    "url": "https://excalidraw.com",
-    "clicks": 3
-  },
-  {
-    "name": "Hysteria2",
-    "url": "https://v2.hysteria.network/",
-    "clicks": 3
-  },
-  {
-    "name": "博客园",
-    "url": "https://www.cnblogs.com/",
-    "clicks": 3
-  },
-  {
-    "name": "局域网IP查询",
-    "url": "https://www.juyuwang.cn",
-    "clicks": 2
+    "clicks": 17
   },
   {
     "name": "AddNav",
-    "url": "add"
+    "url": "add",
+    "clicks": -1
   }
 ]
