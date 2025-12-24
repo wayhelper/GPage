@@ -19,6 +19,9 @@
 <img width="1920" height="919" alt="image" src="https://github.com/user-attachments/assets/a8c9452a-5e5b-437c-83a3-e62b7c586e4c" />
 > 搜索功能，按回车根据当前浏览器引擎执行搜索全网资源
 <img width="1920" height="919" alt="image" src="https://github.com/user-attachments/assets/d10bca11-c139-45e6-9041-69060e2eccca" />
+> 认证功能： 填入appKey，不同的appKey可以实现用户隔离
+<img width="1920" height="919" alt="image" src="https://github.com/user-attachments/assets/37691652-7946-4a21-902c-84d2a2455a03" />
+
 
 ## 部署教程
 
