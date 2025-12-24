@@ -8,6 +8,8 @@
 > 一个简洁、高效、个性化的搜索与导航门户，旨在将您最常用的网站聚合到一个优雅且快速的界面。告别在多个浏览器收藏中切换的烦恼，让您的搜索旅程更加直观和愉悦。
 ---
 
+> 体验网址 http://alal.site   体验appKey = admin
+
 ## 相关页面
 > 首页根据点击率默认展示前6个
 <img width="1920" height="919" alt="image" src="https://github.com/user-attachments/assets/de9a59df-bb76-4a8b-939a-a9f604afa1a4" />
