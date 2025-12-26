@@ -261,3 +261,17 @@ footer {
 }
 
 /*模态框表单结束*/
+/*联系我*/
+.contact-link {
+    font-size: 13px;
+    color: #666;
+    text-decoration: none;
+    font-weight: 400;
+    border-bottom: 1px solid #e0e0e0;
+    transition: color .2s, border-color .2s;
+}
+.contact-link:hover {
+    color: #444;
+    border-color: #bbb;
+}
+/*联系我*/
