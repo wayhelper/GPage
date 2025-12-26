@@ -5,14 +5,14 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>WaySearch</title>
         <link rel="shortcut icon" type="image/x-icon" href="./css/favicon.ico">
-        <link rel="stylesheet" href="./css/style.css?v=202512261549">
-        <script src="./js/style.js?v=202512181107"></script>
+        <link rel="stylesheet" href="./css/style.css?v=202512261811">
+        <script src="./js/style.js?v=202512261811"></script>
     </head>
     <body>
         <h1>WaySearch</h1>
         <input type="text" id="searchBox" placeholder="Search...(Input / allow show all search card.)" oninput="filterCards()">
         <div class="card-container" id="navCards"></div>
-        <!-- 模态框 -->
+        <!-- 新增模态框 -->
         <div id="myModal" class="modal">
             <div class="modal-box">
                 <h3>AddNav</h3>
@@ -26,7 +26,25 @@
                 <button id="submitBtn" class="submit-btn" onclick="submitNewNav()">Ok</button>
             </div>
         </div>
+        <!--设置模态框-->
+        <div id="settingsModal" class="modal">
+            <div class="modal-box">
+                <h3>设置</h3>
 
+                <div class="setting-item">
+                    <span>暗黑模式</span>
+                    <label class="switch">
+                        <input type="checkbox" id="themeToggle" onchange="toggleTheme(this.checked)">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+
+                <hr style="border: 0; border-top: 1px solid var(--input-border); margin: 15px 0;">
+
+                <button class="submit-btn" onclick="closeSettingsModal()">关闭</button>
+            </div>
+        </div>
+        <!--底部-->
         <footer>
             <div style="text-align:center; margin-top: 15px; padding-top: 5px; border-top: 1px solid #4444;">
                 <a href="mailto:heyjingway@gmail.com" class="contact-link">
@@ -37,7 +55,7 @@
                     <div class="menu">
                         <button onclick="auth(true)">认证</button>
                         <button onclick="auth(false)">清除认证</button>
-                        <button>更多</button>
+                        <button onclick="openSettingsModal()">更多</button>
                     </div>
                 </div>
             </div>

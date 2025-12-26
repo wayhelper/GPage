@@ -158,8 +158,39 @@ async function removeNav(name){
     await updateNavData(navData);
 }
 
+// =================== 设置模态框逻辑 ===================
+
+function openSettingsModal() {
+    document.getElementById("settingsModal").style.display = "flex";
+
+    // 初始化开关状态
+    const currentTheme = localStorage.getItem('theme');
+    const isDark = currentTheme === 'dark';
+    document.getElementById('themeToggle').checked = isDark;
+}
+
+function closeSettingsModal() {
+    document.getElementById("settingsModal").style.display = "none";
+}
+
+// 切换主题核心逻辑
+function toggleTheme(isDark) {
+    const theme = isDark ? 'dark' : 'light';
+    if (isDark) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+    } else {
+        document.documentElement.removeAttribute('data-theme');
+    }
+    localStorage.setItem('theme', theme);
+}
+
 // =================== 页面加载事件 ===================
 window.addEventListener('DOMContentLoaded', () => {
+    //===============恢复保存的主题======================
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark') {
+        toggleTheme(true);
+    }
     loadNavData();
     //================显示网站运行时间====================
     getWebsiteRunTime();

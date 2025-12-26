@@ -3,10 +3,12 @@ body {
     font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 5vh 2vw;
-    background: #f0f2f5;
     display: flex;
     flex-direction: column;
     align-items: center;
+    /*add*/
+    background: var(--bg-color);
+    transition: background 0.3s ease;
 }
 
 /* 标题 */
@@ -33,11 +35,13 @@ h1 {
     max-width: 600px;
     padding: 12px 20px;
     font-size: 1rem;
-    border: 1px solid #ddd;
     border-radius: 25px;
     margin-bottom: 40px;
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
     transition: all 0.3s ease;
+    background: var(--card-bg);
+    color: var(--text-color);
+    border: 1px solid var(--input-border);
 }
 
 #searchBox:focus {
@@ -57,13 +61,11 @@ h1 {
 
 /* 卡片 */
 .card {
-    background: #ffffff;
     padding: 25px;
     border-radius: 12px;
     text-align: center;
     font-weight: normal;
     font-size: 1rem;
-    color: #555;
     cursor: pointer;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
@@ -73,25 +75,25 @@ h1 {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    /*min-height: 80px;*/
+    background: var(--card-bg);
+    color: var(--text-color);
 }
-
 
 /* 卡片名称样式 (新增) */
 .card-name {
     font-weight: bold;
     font-size: 1rem;
-    margin: auto; /* 确保名称在卡片中心 */
+    margin: auto;
 }
 
 /* 点击率显示样式 (新增) */
 .card-clicks {
-    position: absolute; /* 绝对定位 */
-    top: 5px; /* 距离顶部 */
-    right: 10px; /* 距离右侧 */
-    font-size: 0.75rem; /* 小字号 */
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    font-size: 0.75rem;
     font-weight: 300;
-    color: #999; /* 浅灰色 */
+    color: #999;
     transition: color 0.3s ease;
 }
 
@@ -110,7 +112,7 @@ h1 {
     color: #ffffff;
     transform: translateY(-5px);
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
-    animation: none; /* 悬停时停止动画 */
+    animation: none;
 }
 /*底部信息*/
 footer {
@@ -133,7 +135,7 @@ footer {
     position: absolute;
     right: 20px;
     top: 65%;
-    transform: translateY(-50%); /* 垂直居中关键 */
+    transform: translateY(-50%);
 }
 
 
@@ -199,8 +201,9 @@ footer {
 
 /* 内容框 */
 .modal-box {
+    background: var(--card-bg);
+    color: var(--text-color);
     align-items: center;
-    background: #fff;
     padding: 24px 28px;
     border-radius: 12px;
     min-width: 300px;
@@ -275,3 +278,76 @@ footer {
     border-color: #bbb;
 }
 /*联系我*/
+
+/*设置样式开始*/
+/* 定义颜色变量 */
+:root {
+    --bg-color: #f0f2f5;
+    --card-bg: #ffffff;
+    --text-color: #555;
+    --input-border: #ddd;
+}
+
+/* 暗色模式变量 */
+[data-theme='dark'] {
+    --bg-color: #1a1a1a;
+    --card-bg: #2d2d2d;
+    --text-color: #e0e0e0;
+    --input-border: #444;
+}
+/* 设置项布局 */
+.setting-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px 0;
+}
+
+/* 滑块开关主体 */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 44px;
+    height: 22px;
+}
+
+/* 隐藏默认复选框 */
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* 滑块轨迹 */
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: #ccc;
+    transition: .3s;
+    border-radius: 22px;
+}
+
+/* 滑块圆点 */
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: .3s;
+    border-radius: 50%;
+}
+
+/* 选中状态（蓝色） */
+input:checked + .slider {
+    background-color: #007aff;
+}
+
+/* 选中时圆点的移动 */
+input:checked + .slider:before {
+    transform: translateX(22px);
+}
+/*设置样式结束*/
