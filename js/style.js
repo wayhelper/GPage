@@ -159,16 +159,11 @@ async function removeNav(name){
 }
 
 // =================== 设置模态框逻辑 ===================
-
 function openSettingsModal() {
     document.getElementById("settingsModal").style.display = "flex";
-
-    // 初始化开关状态
-    const currentTheme = localStorage.getItem('theme');
-    const isAuth = localStorage.getItem('auth')
-    const isDark = currentTheme === 'dark';
-    document.getElementById('themeToggle').checked = isDark;
-    document.getElementById('authToggle').checked = isAuth === 'true';
+    //=================初始化开关状态====================
+    document.getElementById('themeToggle').checked = localStorage.getItem('theme') === 'dark';
+    document.getElementById('authToggle').checked = localStorage.getItem('auth') === 'true';
 }
 
 function closeSettingsModal() {
@@ -188,10 +183,6 @@ function toggleTheme(isDark) {
 }
 function toggleAuth(isAuth) {
     localStorage.setItem('auth', isAuth);
-    if (!isAuth) {
-        localStorage.setItem('appKey', localStorage.getItem('appKey') || 'admin');
-        appKey = localStorage.getItem('appKey');
-    }
 }
 
 // ==================页面加载事件 ===================
