@@ -6,7 +6,7 @@
         <title>WaySearch</title>
         <link rel="shortcut icon" type="image/x-icon" href="./css/favicon.ico">
         <link rel="stylesheet" href="./css/style.css?v=202512291314">
-        <script src="./js/style.js?v=202512291433"></script>
+        <script src="./js/style.js?v=202512291515"></script>
     </head>
     <body>
         <h1>WaySearch</h1>
@@ -53,6 +53,14 @@
                     <span id="id-lang">切换语言</span>
                     <label class="switch">
                         <input type="checkbox" id="languageToggle" onchange="toggleLanguage(this.checked)">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+
+                <div class="setting-item">
+                    <span id="id-top">展示排名</span>
+                    <label class="switch">
+                        <input type="checkbox" id="topToggle" onchange="toggleTop(this.checked)">
                         <span class="slider"></span>
                     </label>
                 </div>

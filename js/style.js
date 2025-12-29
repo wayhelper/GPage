@@ -4,6 +4,7 @@ let appKey = localStorage.getItem('appKey') || 'admin';
 let startTime = new Date("2025-12-29 00:00:00");
 let currentLang = localStorage.getItem('lang') || 'zh';
 let refresh = false;
+let top =localStorage.getItem('top') || 'false';
 
 // ================== 加载 JSON 数据 ===============
 async function loadNavData() {
@@ -13,7 +14,11 @@ async function loadNavData() {
             headers: {'Content-Type': 'application/json', 'appKey': appKey},
         });
         navData = await res.json();
-        renderCards(navData.slice(0, 6));
+        if (top === 'false') {
+            renderCards(navData);
+        } else {
+            renderCards(navData.slice(0, 6));
+        }
     } catch (err) {
         console.error('load db error', err);
     }
@@ -82,7 +87,11 @@ async function updateClickRate(item) {
 function filterCards() {
     const query = document.getElementById('searchBox').value.toLowerCase();
     const filtered = navData.filter(item => item.name.toLowerCase().includes(query));
-    query === "/" ? renderCards(navData) : renderCards(filtered.slice(0, 6).length === 0 ? exactSearchByName('AddNav') : filtered.slice(0, 6));
+    if (top === 'true') {
+        query === "/" ? renderCards(navData) : renderCards(filtered.slice(0, 6).length === 0 ? exactSearchByName('AddNav') : filtered.slice(0, 6));
+    } else {
+        query === "/" ? renderCards(navData) : renderCards(filtered.length === 0 ? exactSearchByName('AddNav') : filtered);
+    }
 }
 
 // =================== 精确查找根据Name ===================
@@ -196,14 +205,18 @@ function toggleLanguage(lang) {
     applyLanguage();
 }
 
+//===================切换置顶函数==================
+function toggleTop(top) {
+    localStorage.setItem('top', top);
+    refresh = true;
+}
+
 // ==================页面加载事件 ===================
 window.addEventListener('DOMContentLoaded', async () => {
     //===============加载语言=======================
     applyLanguage();
     //===============恢复保存的主题==================
     toggleTheme(localStorage.getItem('theme') === 'dark');
-    //===============加载认证信息====================
-    //toggleAuth(localStorage.getItem('auth') === 'true');
     //===============身份验证=======================
     settingAuth();
     //===============加载导航数据====================
@@ -285,9 +298,11 @@ function applyLanguage() {
         let id_theme = document.getElementById('id-theme');
         let id_auth = document.getElementById('id-auth');
         let id_lang = document.getElementById('id-lang');
+        let id_top = document.getElementById('id-top');
         id_theme.textContent = texts.darkMode;
         id_auth.textContent = texts.auth;
         id_lang.textContent = texts.langSelect;
+        id_top.textContent = texts.top;
         settingsModal.querySelector('.submit-btn').textContent = texts.btnClose;
     }
     // 4. 更新页脚
@@ -311,6 +326,7 @@ const i18n = {
         darkMode: '暗黑模式',
         auth: '身份验证',
         langSelect: '切换语言 (中/英)',
+        top: '展示排名',
         btnClose: '关闭',
         contact: '联系我 📫',
         alertComplete: '请完整填写表单',
@@ -332,6 +348,7 @@ const i18n = {
         settings: 'Settings',
         darkMode: 'Dark Mode',
         auth: 'Auth',
+        top: 'Top Display',
         btnClose: 'Close',
         contact: 'Contact Me 📫',
         langSelect: 'Language (CN/EN)',
