@@ -185,13 +185,14 @@ function toggleTheme(isDark) {
     }
     localStorage.setItem('theme', theme);
 }
-function authSetting(isAuth) {
+function toggleAuth(isAuth) {
     localStorage.setItem('auth', isAuth);
     if (isAuth) {
         localStorage.setItem('appKey', localStorage.getItem('appKey') === 'admin' ? '' : localStorage.getItem('appKey'));
     } else {
         localStorage.setItem('appKey', localStorage.getItem('appKey') || 'admin');
     }
+    location.reload();
 }
 
 // =================== 页面加载事件 ===================
