@@ -165,8 +165,10 @@ function openSettingsModal() {
 
     // 初始化开关状态
     const currentTheme = localStorage.getItem('theme');
+    const isAuth = localStorage.getItem('auth')
     const isDark = currentTheme === 'dark';
     document.getElementById('themeToggle').checked = isDark;
+    document.getElementById('authToggle').checked = isAuth === 'true';
 }
 
 function closeSettingsModal() {
@@ -184,6 +186,7 @@ function toggleTheme(isDark) {
     localStorage.setItem('theme', theme);
 }
 function authSetting(isAuth) {
+    localStorage.setItem('auth', isAuth);
     if (isAuth) {
         localStorage.setItem('appKey', localStorage.getItem('appKey') === 'admin' ? '' : localStorage.getItem('appKey'));
     } else {
