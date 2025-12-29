@@ -4,7 +4,7 @@ let appKey = localStorage.getItem('appKey') || 'admin';
 let startTime = new Date("2025-12-29 00:00:00");
 let currentLang = localStorage.getItem('lang') || 'zh';
 let refresh = false;
-let top =localStorage.getItem('top') || 'false';
+let topList =localStorage.getItem('topList') || 'false';
 
 // ================== 加载 JSON 数据 ===============
 async function loadNavData() {
@@ -14,7 +14,7 @@ async function loadNavData() {
             headers: {'Content-Type': 'application/json', 'appKey': appKey},
         });
         navData = await res.json();
-        if (top === 'false') {
+        if (topList === 'false') {
             renderCards(navData);
         } else {
             renderCards(navData.slice(0, 6));
@@ -87,7 +87,7 @@ async function updateClickRate(item) {
 function filterCards() {
     const query = document.getElementById('searchBox').value.toLowerCase();
     const filtered = navData.filter(item => item.name.toLowerCase().includes(query));
-    if (top === 'true') {
+    if (topList === 'true') {
         query === "/" ? renderCards(navData) : renderCards(filtered.slice(0, 6).length === 0 ? exactSearchByName('AddNav') : filtered.slice(0, 6));
     } else {
         query === "/" ? renderCards(navData) : renderCards(filtered.length === 0 ? exactSearchByName('AddNav') : filtered);
@@ -206,8 +206,8 @@ function toggleLanguage(lang) {
 }
 
 //===================切换置顶函数==================
-function toggleTop(top) {
-    localStorage.setItem('top', top);
+function toggleTop(_top) {
+    localStorage.setItem('topList', _top);
     refresh = true;
 }
 
