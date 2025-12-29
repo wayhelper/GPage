@@ -198,10 +198,9 @@ function toggleAuth(isAuth) {
 // =================== 页面加载事件 ===================
 window.addEventListener('DOMContentLoaded', () => {
     //===============恢复保存的主题======================
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'dark') {
-        toggleTheme(true);
-    }
+    toggleTheme(localStorage.getItem('theme') === 'dark');
+    //===============加载导航数据======================
+    toggleAuth(localStorage.getItem('auth') === 'true');
     loadNavData();
     //================显示网站运行时间====================
     getWebsiteRunTime();
