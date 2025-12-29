@@ -169,7 +169,6 @@ function openSettingsModal() {
 
 function closeSettingsModal() {
     document.getElementById("settingsModal").style.display = "none";
-    auth();
     refreshPage();
 }
 
@@ -185,6 +184,7 @@ function toggleTheme(isDark) {
 }
 function toggleAuth(isAuth) {
     localStorage.setItem('auth', isAuth);
+    refresh = true;
 }
 
 // ==================页面加载事件 ===================
@@ -192,7 +192,9 @@ window.addEventListener('DOMContentLoaded', async () => {
     //===============恢复保存的主题==================
     toggleTheme(localStorage.getItem('theme') === 'dark');
     //===============加载认证信息====================
-    toggleAuth(localStorage.getItem('auth') === 'true');
+    //toggleAuth(localStorage.getItem('auth') === 'true');
+    //===============身份验证=======================
+    settingAuth();
     //===============加载导航数据====================
     await loadNavData();
     //===============显示网站运行时间=================
@@ -216,7 +218,7 @@ function getWebsiteRunTime() {
 }
 
 // =================== 身份验证 ===================
-function auth(){
+function settingAuth(){
     if (localStorage.getItem('auth') === 'true') {
         appKey = localStorage.getItem('appKey') || 'admin';
         if (appKey==='admin') {
