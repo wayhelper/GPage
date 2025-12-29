@@ -2,7 +2,7 @@
 let navData = [];
 let appKey = localStorage.getItem('appKey') || 'admin';
 let startTime = new Date("2024-01-01 00:00:00");
-let flash = false;
+let refresh = false;
 
 // ================== 加载 JSON 数据 ===============
 async function loadNavData() {
@@ -183,6 +183,7 @@ function toggleTheme(isDark) {
 }
 function toggleAuth(isAuth) {
     localStorage.setItem('auth', isAuth);
+    refreshPage()
 }
 
 // ==================页面加载事件 ===================
@@ -232,9 +233,9 @@ function auth(auth){
     location.reload();
 }
 //==================刷新逻辑=======================
-function flashPage(){
-    if (flash) {
+function refreshPage(){
+    if (refresh) {
         location.reload();
     }
-    flash = !flash;
+    refresh = false;
 }
