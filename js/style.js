@@ -229,6 +229,7 @@ function auth(){
     } else {
         localStorage.setItem('appKey', 'admin');
         appKey = 'admin';
+        alert('Authentication disabled, using default user: admin');
     }
 }
 //==================刷新逻辑=======================
