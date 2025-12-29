@@ -185,7 +185,6 @@ function toggleTheme(isDark) {
 }
 function toggleAuth(isAuth) {
     localStorage.setItem('auth', isAuth);
-    refresh = true;
 }
 
 // ==================页面加载事件 ===================
@@ -223,6 +222,7 @@ function auth(){
         if (appKey==='admin') {
             appKey =prompt('Input auth（appKey）：');
             localStorage.setItem('appKey', appKey);
+            refresh = true;
         } else {
             appKey = localStorage.getItem('appKey');
         }
