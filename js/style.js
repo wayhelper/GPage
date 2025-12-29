@@ -1,6 +1,6 @@
 // =================== 全局变量 ===================
 let navData = [];
-let appKey = localStorage.getItem('appKey') || '';
+let appKey = localStorage.getItem('appKey') || 'admin';
 let startTime = new Date("2024-01-01 00:00:00");
 
 // ================== 加载 JSON 数据 ===============

@@ -5,7 +5,7 @@
     "clicks": 134
   },
   {
-    "name": "GTool ",
+    "name": "GTool",
     "url": "https://tool.alal.site",
     "clicks": 104
   },
@@ -60,8 +60,348 @@
     "clicks": 17
   },
   {
-    "name": "AddNav",
-    "url": "add",
-    "clicks": -1
+    "name": "Google",
+    "url": "https://www.google.com",
+    "clicks": 0
+  },
+  {
+    "name": "GitHub",
+    "url": "https://github.com",
+    "clicks": 0
+  },
+  {
+    "name": "Stack Overflow",
+    "url": "https://stackoverflow.com",
+    "clicks": 0
+  },
+  {
+    "name": "Reddit",
+    "url": "https://www.reddit.com",
+    "clicks": 0
+  },
+  {
+    "name": "Wikipedia",
+    "url": "https://www.wikipedia.org",
+    "clicks": 0
+  },
+  {
+    "name": "Twitter",
+    "url": "https://twitter.com",
+    "clicks": 0
+  },
+  {
+    "name": "X",
+    "url": "https://x.com",
+    "clicks": 0
+  },
+  {
+    "name": "Facebook",
+    "url": "https://www.facebook.com",
+    "clicks": 0
+  },
+  {
+    "name": "Instagram",
+    "url": "https://www.instagram.com",
+    "clicks": 0
+  },
+  {
+    "name": "LinkedIn",
+    "url": "https://www.linkedin.com",
+    "clicks": 0
+  },
+  {
+    "name": "Amazon",
+    "url": "https://www.amazon.com",
+    "clicks": 0
+  },
+  {
+    "name": "eBay",
+    "url": "https://www.ebay.com",
+    "clicks": 0
+  },
+  {
+    "name": "AliExpress",
+    "url": "https://www.aliexpress.com",
+    "clicks": 0
+  },
+  {
+    "name": "Taobao",
+    "url": "https://www.taobao.com",
+    "clicks": 0
+  },
+  {
+    "name": "JD",
+    "url": "https://www.jd.com",
+    "clicks": 0
+  },
+  {
+    "name": "Tmall",
+    "url": "https://www.tmall.com",
+    "clicks": 0
+  },
+  {
+    "name": "Netflix",
+    "url": "https://www.netflix.com",
+    "clicks": 0
+  },
+  {
+    "name": "Twitch",
+    "url": "https://www.twitch.tv",
+    "clicks": 0
+  },
+  {
+    "name": "Prime Video",
+    "url": "https://www.primevideo.com",
+    "clicks": 0
+  },
+  {
+    "name": "Disney+",
+    "url": "https://www.disneyplus.com",
+    "clicks": 0
+  },
+  {
+    "name": "Notion",
+    "url": "https://www.notion.so",
+    "clicks": 0
+  },
+  {
+    "name": "Slack",
+    "url": "https://slack.com",
+    "clicks": 0
+  },
+  {
+    "name": "Figma",
+    "url": "https://www.figma.com",
+    "clicks": 0
+  },
+  {
+    "name": "Canva",
+    "url": "https://www.canva.com",
+    "clicks": 0
+  },
+  {
+    "name": "Trello",
+    "url": "https://trello.com",
+    "clicks": 0
+  },
+  {
+    "name": "AWS Console",
+    "url": "https://console.aws.amazon.com",
+    "clicks": 0
+  },
+  {
+    "name": "Google Cloud",
+    "url": "https://console.cloud.google.com",
+    "clicks": 0
+  },
+  {
+    "name": "Azure Portal",
+    "url": "https://portal.azure.com",
+    "clicks": 0
+  },
+  {
+    "name": "Vercel",
+    "url": "https://vercel.com",
+    "clicks": 0
+  },
+  {
+    "name": "Netlify",
+    "url": "https://www.netlify.com",
+    "clicks": 0
+  },
+  {
+    "name": "MDN",
+    "url": "https://developer.mozilla.org",
+    "clicks": 0
+  },
+  {
+    "name": "W3Schools",
+    "url": "https://www.w3schools.com",
+    "clicks": 0
+  },
+  {
+    "name": "FreeCodeCamp",
+    "url": "https://www.freecodecamp.org",
+    "clicks": 0
+  },
+  {
+    "name": "LeetCode",
+    "url": "https://leetcode.com",
+    "clicks": 0
+  },
+  {
+    "name": "HackerRank",
+    "url": "https://www.hackerrank.com",
+    "clicks": 0
+  },
+  {
+    "name": "知乎",
+    "url": "https://www.zhihu.com",
+    "clicks": 0
+  },
+  {
+    "name": "微博",
+    "url": "https://weibo.com",
+    "clicks": 0
+  },
+  {
+    "name": "小红书",
+    "url": "https://www.xiaohongshu.com",
+    "clicks": 0
+  },
+  {
+    "name": "掘金",
+    "url": "https://juejin.cn",
+    "clicks": 0
+  },
+  {
+    "name": "开源中国",
+    "url": "https://www.oschina.net",
+    "clicks": 0
+  },
+  {
+    "name": "百度",
+    "url": "https://www.baidu.com",
+    "clicks": 0
+  },
+  {
+    "name": "Bing",
+    "url": "https://www.bing.com",
+    "clicks": 0
+  },
+  {
+    "name": "DuckDuckGo",
+    "url": "https://duckduckgo.com",
+    "clicks": 0
+  },
+  {
+    "name": "PayPal",
+    "url": "https://www.paypal.com",
+    "clicks": 0
+  },
+  {
+    "name": "Stripe",
+    "url": "https://stripe.com",
+    "clicks": 0
+  },
+  {
+    "name": "Wise",
+    "url": "https://wise.com",
+    "clicks": 0
+  },
+  {
+    "name": "Zoom",
+    "url": "https://zoom.us",
+    "clicks": 0
+  },
+  {
+    "name": "Google Meet",
+    "url": "https://meet.google.com",
+    "clicks": 0
+  },
+  {
+    "name": "Microsoft Teams",
+    "url": "https://teams.microsoft.com",
+    "clicks": 0
+  },
+  {
+    "name": "OpenAI",
+    "url": "https://openai.com",
+    "clicks": 0
+  },
+  {
+    "name": "Anthropic",
+    "url": "https://www.anthropic.com",
+    "clicks": 0
+  },
+  {
+    "name": "Perplexity",
+    "url": "https://www.perplexity.ai",
+    "clicks": 0
+  },
+  {
+    "name": "Hugging Face",
+    "url": "https://huggingface.co",
+    "clicks": 0
+  },
+  {
+    "name": "Docker Hub",
+    "url": "https://hub.docker.com",
+    "clicks": 0
+  },
+  {
+    "name": "GitLab",
+    "url": "https://gitlab.com",
+    "clicks": 0
+  },
+  {
+    "name": "Bitbucket",
+    "url": "https://bitbucket.org",
+    "clicks": 0
+  },
+  {
+    "name": "DigitalOcean",
+    "url": "https://www.digitalocean.com",
+    "clicks": 0
+  },
+  {
+    "name": "Namecheap",
+    "url": "https://www.namecheap.com",
+    "clicks": 0
+  },
+  {
+    "name": "GoDaddy",
+    "url": "https://www.godaddy.com",
+    "clicks": 0
+  },
+  {
+    "name": "Hacker News",
+    "url": "https://news.ycombinator.com",
+    "clicks": 0
+  },
+  {
+    "name": "Product Hunt",
+    "url": "https://www.producthunt.com",
+    "clicks": 0
+  },
+  {
+    "name": "Dribbble",
+    "url": "https://dribbble.com",
+    "clicks": 0
+  },
+  {
+    "name": "Behance",
+    "url": "https://www.behance.net",
+    "clicks": 0
+  },
+  {
+    "name": "Unsplash",
+    "url": "https://unsplash.com",
+    "clicks": 0
+  },
+  {
+    "name": "Pexels",
+    "url": "https://www.pexels.com",
+    "clicks": 0
+  },
+  {
+    "name": "Font Awesome",
+    "url": "https://fontawesome.com",
+    "clicks": 0
+  },
+  {
+    "name": "Google Fonts",
+    "url": "https://fonts.google.com",
+    "clicks": 0
+  },
+  {
+    "name": "Archive",
+    "url": "https://archive.org",
+    "clicks": 0
+  },
+  {
+    "name": "Speedtest",
+    "url": "https://www.speedtest.net",
+    "clicks": 0
   }
 ]
