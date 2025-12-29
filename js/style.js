@@ -226,11 +226,11 @@ function auth(){
         } else {
             appKey = localStorage.getItem('appKey');
         }
-    } else {
+    }/* else {
         localStorage.setItem('appKey', 'admin');
         appKey = 'admin';
         alert('Authentication disabled, using default user: admin');
-    }
+    }*/
 }
 //==================刷新逻辑=======================
 function refreshPage(){
