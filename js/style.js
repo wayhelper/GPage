@@ -1,7 +1,7 @@
 // =================== 全局变量 ===================
 let navData = [];
 let appKey = localStorage.getItem('appKey') || 'admin';
-let startTime = new Date("2024-01-01 00:00:00");
+let startTime = new Date("2025-12-29 00:00:00");
 let currentLang = localStorage.getItem('lang') || 'zh';
 let refresh = false;
 
@@ -62,7 +62,7 @@ function renderCards(data) {
         // 右键删除
         card.oncontextmenu = (e) => {
             e.preventDefault();
-            const ok = confirm(`删除卡片 "${item.name}" ?`);
+            const ok = confirm(i18n[currentLang].alertExists+`"${item.name}" ?`);
             if (!ok) return;
             removeNav(item.name).then(r => filterCards());
         };
@@ -246,7 +246,7 @@ function settingAuth(){
         if (localStorage.getItem('appKey') && localStorage.getItem('appKey') !== 'admin') {
             localStorage.setItem('appKey', 'admin');
             appKey = 'admin';
-            alert('Authentication disabled, using default user: admin');
+            alert(i18n[currentLang].alertAuth);
             refresh = true;
         }
     }
