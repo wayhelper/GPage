@@ -2,6 +2,7 @@
 let navData = [];
 let appKey = localStorage.getItem('appKey') || 'admin';
 let startTime = new Date("2024-01-01 00:00:00");
+let flash = false;
 
 // ================== 加载 JSON 数据 ===============
 async function loadNavData() {
@@ -168,10 +169,9 @@ function openSettingsModal() {
 
 function closeSettingsModal() {
     document.getElementById("settingsModal").style.display = "none";
-    location.reload();
 }
 
-// 切换主题核心逻辑
+// ============切换主题核心逻辑===================
 function toggleTheme(isDark) {
     const theme = isDark ? 'dark' : 'light';
     if (isDark) {
@@ -230,4 +230,11 @@ function auth(auth){
         alert('已清除您的身份验证信息！使用默认身份 "admin" 继续访问。');
     }
     location.reload();
+}
+//==================刷新逻辑=======================
+function flashPage(){
+    if (flash) {
+        location.reload();
+    }
+    flash = !flash;
 }
