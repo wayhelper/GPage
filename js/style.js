@@ -220,8 +220,11 @@ function getWebsiteRunTime() {
 // =================== 身份验证 ===================
 function settingAuth(){
     if (localStorage.getItem('auth') === 'true') {
-        appKey = localStorage.getItem('appKey') || 'admin';
-        if (appKey==='admin') {
+        let _appKey = (() => {
+            const v = localStorage.getItem('appKey');
+            return v === null || v === 'null' ? 'admin' : v;
+        })();
+        if (_appKey==='admin') {
             appKey =prompt('Input auth（appKey）：');
             localStorage.setItem('appKey', appKey);
             refresh = true;
