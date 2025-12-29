@@ -158,10 +158,10 @@ footer {
     right: 0;
     display: flex;
     flex-direction: row;
-    gap: 6px;
+    gap: 12px;
     opacity: 0;
     pointer-events: none;
-    transform: translateY(10px);
+    transform: translateX(10px);
     transition: all 0.3s ease;
 }
 
@@ -169,11 +169,11 @@ footer {
 .settings:hover .menu {
     opacity: 1;
     pointer-events: auto;
-    transform: translateY(0);
+    transform: translateX(0);
 }
 
 /* 按钮外观 */
-.menu button {
+/*.menu button {
     padding: 6px 10px;
     border-radius: 6px;
     border: none;
@@ -181,11 +181,15 @@ footer {
     color: #fff;
     cursor: pointer;
     font-size: 13px;
+    white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .menu button:hover {
     background: #777;
-}
+}*/
 /*模态框表单开始*/
 /* 背景遮罩 */
 .modal {
