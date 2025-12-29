@@ -176,6 +176,7 @@ function openSettingsModal() {
     document.getElementById('themeToggle').checked = localStorage.getItem('theme') === 'dark';
     document.getElementById('authToggle').checked = localStorage.getItem('auth') === 'true';
     document.getElementById('languageToggle').checked = (currentLang === 'zh');
+    document.getElementById('topToggle').checked = localStorage.getItem('topList') === 'true';
 }
 
 function closeSettingsModal() {
