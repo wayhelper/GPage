@@ -33,7 +33,8 @@
 <img width="1807" height="1003" alt="image" src="https://github.com/user-attachments/assets/17f743b2-f924-4421-835f-8e0b06813910" />
 
 > 设置页
-<img width="1920" height="919" alt="image" src="https://github.com/user-attachments/assets/72636395-120f-4c63-aa74-fb2f17d1f88c" />
+<img width="1671" height="1002" alt="image" src="https://github.com/user-attachments/assets/d1d33639-0e84-4506-b231-583d188935c2" />
+
 
 ## 部署教程
 
