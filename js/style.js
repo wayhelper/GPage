@@ -2,6 +2,7 @@
 let navData = [];
 let appKey = localStorage.getItem('appKey') || 'admin';
 let startTime = new Date("2024-01-01 00:00:00");
+let currentLang = localStorage.getItem('lang') || 'zh';
 let refresh = false;
 
 // ================== 加载 JSON 数据 ===============
@@ -137,14 +138,14 @@ function submitNewNav() {
         clicks:0
     };
     if (data.name === '' || data.url === '') {
-        alert('please complete the form');
+        alert(i18n[currentLang].alertComplete);
         closeModal();
         return;
     }
     // 去重逻辑
     const exists = navData.some(item => item.name.toLowerCase() === data.name.toLowerCase());
     if (exists) {
-        alert('this card already exists');
+        alert(i18n[currentLang].alertExists);
         closeModal();
         return;
     }
@@ -165,6 +166,7 @@ function openSettingsModal() {
     //=================初始化开关状态====================
     document.getElementById('themeToggle').checked = localStorage.getItem('theme') === 'dark';
     document.getElementById('authToggle').checked = localStorage.getItem('auth') === 'true';
+    document.getElementById('languageToggle').checked = (currentLang === 'zh');
 }
 
 function closeSettingsModal() {
@@ -182,13 +184,22 @@ function toggleTheme(isDark) {
     }
     localStorage.setItem('theme', theme);
 }
+//===================切换认证函数==================
 function toggleAuth(isAuth) {
     localStorage.setItem('auth', isAuth);
     refresh = true;
 }
+//===================切换语言函数==================
+function toggleLanguage(lang) {
+    currentLang = lang ? 'zh' : 'en';
+    localStorage.setItem('lang', currentLang);
+    applyLanguage();
+}
 
 // ==================页面加载事件 ===================
 window.addEventListener('DOMContentLoaded', async () => {
+    //===============加载语言=======================
+    applyLanguage();
     //===============恢复保存的主题==================
     toggleTheme(localStorage.getItem('theme') === 'dark');
     //===============加载认证信息====================
@@ -247,3 +258,87 @@ function refreshPage(){
     }
     refresh = false;
 }
+
+//====================应用语言到 DOM===============
+function applyLanguage() {
+    const texts = i18n[currentLang];
+    // 1. 更新页面标题和搜索框
+    document.title = texts.title;
+    const h1 = document.querySelector('h1');
+    if (h1) h1.textContent = texts.title;
+    const searchBox = document.getElementById('searchBox');
+    if (searchBox) searchBox.placeholder = texts.searchPlaceholder;
+    // 2. 更新“新增导航”模态框 (myModal)
+    const myModal = document.getElementById('myModal');
+    if (myModal) {
+        myModal.querySelector('h3').textContent = texts.addNav;
+        const labels = myModal.querySelectorAll('label');
+        if (labels[0]) labels[0].textContent = texts.siteName;
+        if (labels[1]) labels[1].textContent = texts.siteUrl;
+        document.getElementById('nameInput').placeholder = texts.inputName;
+        document.getElementById('submitBtn').textContent = texts.btnOk;
+    }
+    // 3. 更新“设置”模态框 (settingsModal)
+    const settingsModal = document.getElementById('settingsModal');
+    if (settingsModal) {
+        settingsModal.querySelector('h3').textContent = texts.settings;
+        let id_theme = document.getElementById('id-theme');
+        let id_auth = document.getElementById('id-auth');
+        let id_lang = document.getElementById('id-lang');
+        id_theme.textContent = texts.darkMode;
+        id_auth.textContent = texts.auth;
+        id_lang.textContent = texts.langSelect;
+        settingsModal.querySelector('.submit-btn').textContent = texts.btnClose;
+    }
+    // 4. 更新页脚
+    const contactLink = document.querySelector('.contact-link');
+    if (contactLink) contactLink.textContent = texts.contact;
+}
+
+// =================== 语言配置 ===================
+const i18n = {
+    'zh': {
+        title: '路书',
+        searchPlaceholder: '搜索... (输入 / 显示所有卡片)',
+        addNav: '新增导航',
+        siteName: '网站名称',
+        siteUrl: '网站链接',
+        inputName: '输入网站名称',
+        inputUrl: 'https://example.com',
+        btnOk: '确定',
+        btnUpdate: '更新',
+        settings: '设置',
+        darkMode: '暗黑模式',
+        auth: '身份验证',
+        langSelect: '切换语言 (中/英)',
+        btnClose: '关闭',
+        contact: '联系我 📫',
+        alertComplete: '请完整填写表单',
+        alertExists: '该卡片已存在',
+        alertAuth: '验证已关闭，使用默认用户: admin',
+        promptAuth: '输入认证码 (appKey)：',
+        confirmDel: '删除卡片'
+    },
+    'en': {
+        title: 'WaySearch',
+        searchPlaceholder: 'Search... (Input / to show all cards)',
+        addNav: 'Add Nav',
+        siteName: 'Site Name',
+        siteUrl: 'URL',
+        inputName: 'Input Website Name',
+        inputUrl: 'https://example.com',
+        btnOk: 'OK',
+        btnUpdate: 'Update',
+        settings: 'Settings',
+        darkMode: 'Dark Mode',
+        auth: 'Auth',
+        btnClose: 'Close',
+        contact: 'Contact Me 📫',
+        langSelect: 'Language (CN/EN)',
+        alertComplete: 'Please complete the form',
+        alertExists: 'This card already exists',
+        alertAuth: 'Authentication disabled, using default user: admin',
+        promptAuth: 'Input auth (appKey):',
+        confirmDel: 'Delete card'
+    }
+};

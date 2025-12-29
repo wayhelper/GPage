@@ -6,7 +6,7 @@
         <title>WaySearch</title>
         <link rel="shortcut icon" type="image/x-icon" href="./css/favicon.ico">
         <link rel="stylesheet" href="./css/style.css?v=202512291314">
-        <script src="./js/style.js?v=202512291314"></script>
+        <script src="./js/style.js?v=202512291433"></script>
     </head>
     <body>
         <h1>WaySearch</h1>
@@ -34,7 +34,7 @@
                 <hr style="border: 0; border-top: 1px solid var(--input-border); margin: 15px 0;">
 
                 <div class="setting-item">
-                    <span>暗黑模式</span>
+                    <span id="id-theme">暗黑模式</span>
                     <label class="switch">
                         <input type="checkbox" id="themeToggle" onchange="toggleTheme(this.checked)">
                         <span class="slider"></span>
@@ -42,9 +42,17 @@
                 </div>
 
                 <div class="setting-item">
-                    <span>认证</span>
+                    <span id="id-auth">认证</span>
                     <label class="switch">
                         <input type="checkbox" id="authToggle" onchange="toggleAuth(this.checked)">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+
+                <div class="setting-item">
+                    <span id="id-lang">切换语言</span>
+                    <label class="switch">
+                        <input type="checkbox" id="languageToggle" onchange="toggleLanguage(this.checked)">
                         <span class="slider"></span>
                     </label>
                 </div>
@@ -62,9 +70,6 @@
                 </a>
                 <div class="settings">
                     <div class="gear" onclick="openSettingsModal()">⚙️</div>
-                    <!--<div class="menu">
-                        <button onclick="openSettingsModal()">设置</button>
-                    </div>-->
                 </div>
             </div>
         </footer>
