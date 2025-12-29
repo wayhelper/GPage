@@ -62,7 +62,7 @@ function renderCards(data) {
         // 右键删除
         card.oncontextmenu = (e) => {
             e.preventDefault();
-            const ok = confirm(i18n[currentLang].alertExists+`"${item.name}" ?`);
+            const ok = confirm(i18n[currentLang].confirmDel+`"${item.name}" ?`);
             if (!ok) return;
             removeNav(item.name).then(r => filterCards());
         };
