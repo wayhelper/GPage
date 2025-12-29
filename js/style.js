@@ -177,6 +177,7 @@ function openSettingsModal() {
     document.getElementById('authToggle').checked = localStorage.getItem('auth') === 'true';
     document.getElementById('languageToggle').checked = (currentLang === 'zh');
     document.getElementById('topToggle').checked = localStorage.getItem('topList') === 'true';
+    document.getElementById('bgToggle').checked = Boolean(localStorage.getItem('customBg'));
 }
 
 function closeSettingsModal() {
@@ -211,11 +212,80 @@ function toggleTop(_top) {
     localStorage.setItem('topList', _top);
     refresh = true;
 }
+// =================== 背景图片逻辑 ===================
+
+// 切换背景开关
+function toggleBackground(isOn) {
+    const fileInput = document.getElementById('bgFileInput');
+    if (isOn) {
+        // 立即弹出文件选择器
+        fileInput.click();
+        // 监测用户是否取消了选择
+        window.addEventListener('focus', function onFocus() {
+            setTimeout(() => {
+                if (!fileInput.value && !localStorage.getItem('customBg')) {
+                    document.getElementById('bgToggle').checked = false;
+                }
+                window.removeEventListener('focus', onFocus);
+            }, 300);
+        });
+    } else {
+        // 关闭则清除数据和样式
+        clearBackground();
+    }
+}
+// 处理文件上传
+function handleBgUpload(input) {
+    const file = input.files[0];
+    if (!file) {
+        document.getElementById('bgToggle').checked = false;
+        return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = function(e) {
+        const base64Data = e.target.result;
+        try {
+            // 存储并应用
+            localStorage.setItem('customBg', base64Data.trim());
+            applyBackground(base64Data);
+        } catch (err) {
+            alert("图片过大，保存失败（请尝试 2MB 以内的图片）");
+            document.getElementById('bgToggle').checked = false;
+            clearBackground();
+        }
+    };
+    reader.readAsDataURL(file);
+}
+
+// 应用背景样式
+function applyBackground(bgData) {
+    if (bgData) {
+        removeRibbon();
+        document.body.style.backgroundImage = `url('${bgData}')`;
+        document.body.style.backgroundSize = 'cover';
+        document.body.style.backgroundAttachment = 'fixed';
+        document.body.style.backgroundPosition = 'center';
+        refresh = true;
+    } else {
+        document.body.style.backgroundImage = '';
+        loadRibbon();
+    }
+}
+
+// 清除背景数据
+function clearBackground() {
+    localStorage.removeItem('customBg');
+    applyBackground(null);
+    document.getElementById('bgFileInput').value = ''; // 重置 input 状态
+}
 
 // ==================页面加载事件 ===================
 window.addEventListener('DOMContentLoaded', async () => {
     //===============加载语言=======================
     applyLanguage();
+    //===============加载背景=======================
+    applyBackground(localStorage.getItem('customBg'));
     //===============恢复保存的主题==================
     toggleTheme(localStorage.getItem('theme') === 'dark');
     //===============身份验证=======================
@@ -273,6 +343,27 @@ function refreshPage(){
     refresh = false;
 }
 
+//==================默认背景加载=======================
+function loadRibbon() {
+    if (!document.getElementById('ribbon')) {
+        const script = document.createElement('script');
+        script.id = 'ribbon';
+        script.src = './js/canvas-ribbon.min.js';
+        script.defer = true;
+        script.setAttribute('size', '100');
+        script.setAttribute('alpha', '0.6');
+        script.setAttribute('zIndex', '-1');
+        script.setAttribute('mobile', 'false');
+        script.setAttribute('data-click', 'true');
+        document.body.appendChild(script);
+    }
+}
+
+function removeRibbon() {
+    const ribbon = document.getElementById('ribbon');
+    if (ribbon) ribbon.remove();
+}
+
 //====================应用语言到 DOM===============
 function applyLanguage() {
     const texts = i18n[currentLang];
@@ -300,10 +391,12 @@ function applyLanguage() {
         let id_auth = document.getElementById('id-auth');
         let id_lang = document.getElementById('id-lang');
         let id_top = document.getElementById('id-top');
+        const id_bg = document.getElementById('id-bg');
         id_theme.textContent = texts.darkMode;
         id_auth.textContent = texts.auth;
         id_lang.textContent = texts.langSelect;
         id_top.textContent = texts.topList;
+        if (id_bg) id_bg.textContent = texts.bgSetting;
         settingsModal.querySelector('.submit-btn').textContent = texts.btnClose;
     }
     // 4. 更新页脚
@@ -334,7 +427,8 @@ const i18n = {
         alertExists: '该卡片已存在',
         alertAuth: '验证已关闭，使用默认用户: admin',
         promptAuth: '输入认证码 (appKey)：',
-        confirmDel: '删除卡片'
+        confirmDel: '删除卡片',
+        bgSetting: '自定义背景'
     },
     'en': {
         title: 'WaySearch',
@@ -357,6 +451,7 @@ const i18n = {
         alertExists: 'This card already exists',
         alertAuth: 'Authentication disabled, using default user: admin',
         promptAuth: 'Input auth (appKey):',
-        confirmDel: 'Delete card'
+        confirmDel: 'Delete card',
+        bgSetting: 'Background'
     }
 };
