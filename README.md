@@ -30,7 +30,7 @@
 <img width="1920" height="919" alt="image" src="https://github.com/user-attachments/assets/d10bca11-c139-45e6-9041-69060e2eccca" />
 
 > 认证功能： 填入appKey，不同的appKey可以实现用户隔离
-<img width="1920" height="919" alt="image" src="https://github.com/user-attachments/assets/37691652-7946-4a21-902c-84d2a2455a03" />
+<img width="1807" height="1003" alt="image" src="https://github.com/user-attachments/assets/17f743b2-f924-4421-835f-8e0b06813910" />
 
 > 设置页
 <img width="1920" height="919" alt="image" src="https://github.com/user-attachments/assets/72636395-120f-4c63-aa74-fb2f17d1f88c" />
