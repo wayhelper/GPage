@@ -183,6 +183,13 @@ function toggleTheme(isDark) {
     }
     localStorage.setItem('theme', theme);
 }
+function authSetting(isAuth) {
+    if (isAuth) {
+        localStorage.setItem('appKey', localStorage.getItem('appKey') === 'admin' ? '' : localStorage.getItem('appKey'));
+    } else {
+        localStorage.setItem('appKey', localStorage.getItem('appKey') || 'admin');
+    }
+}
 
 // =================== 页面加载事件 ===================
 window.addEventListener('DOMContentLoaded', () => {

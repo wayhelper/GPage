@@ -6,7 +6,7 @@
         <title>WaySearch</title>
         <link rel="shortcut icon" type="image/x-icon" href="./css/favicon.ico">
         <link rel="stylesheet" href="./css/style.css?v=202512261811">
-        <script src="./js/style.js?v=202512261811"></script>
+        <script src="./js/style.js?v=202512290900"></script>
     </head>
     <body>
         <h1>WaySearch</h1>
@@ -31,10 +31,20 @@
             <div class="modal-box">
                 <h3 style="text-align: center">设置</h3>
 
+                <hr style="border: 0; border-top: 1px solid var(--input-border); margin: 15px 0;">
+
                 <div class="setting-item">
                     <span>暗黑模式</span>
                     <label class="switch">
                         <input type="checkbox" id="themeToggle" onchange="toggleTheme(this.checked)">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+
+                <div class="setting-item">
+                    <span>认证</span>
+                    <label class="switch">
+                        <input type="checkbox" id="auth" onchange="authSetting(this.checked)">
                         <span class="slider"></span>
                     </label>
                 </div>
