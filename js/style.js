@@ -195,26 +195,27 @@ function toggleAuth(isAuth) {
     }
 }
 
-// =================== 页面加载事件 ===================
-window.addEventListener('DOMContentLoaded', () => {
-    //===============恢复保存的主题======================
+// ==================页面加载事件 ===================
+window.addEventListener('DOMContentLoaded', async () => {
+    //===============恢复保存的主题==================
     toggleTheme(localStorage.getItem('theme') === 'dark');
-    //===============加载导航数据======================
+    //===============加载认证信息====================
     toggleAuth(localStorage.getItem('auth') === 'true');
-    loadNavData();
-    //================显示网站运行时间====================
+    //===============加载导航数据====================
+    await loadNavData();
+    //===============显示网站运行时间=================
     getWebsiteRunTime();
-    // =================== 初始化搜索 ===================
-    document.getElementById('searchBox').focus();
-    // =========== 为搜索框添加键盘事件监听器 ==============
+    //==============初始化搜索=======================
+    const searchBox = document.getElementById('searchBox');
+    searchBox.focus();
+    // ==============为搜索框添加键盘事件监听器=========
     searchBox.addEventListener('keydown', handleSearchEnter);
 });
 
 // =================== 工具函数 ===================
 function getWebsiteRunTime() {
     const now = new Date();
-    const diff = now - startTime; // 毫秒差
-
+    const diff = now - startTime;
     const days = Math.floor(diff / (1000 * 60 * 60 * 24));
     const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
     const minutes = Math.floor((diff / (1000 * 60)) % 60);
