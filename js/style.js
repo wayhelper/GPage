@@ -250,7 +250,7 @@ function handleBgUpload(input) {
             localStorage.setItem('customBg', base64Data.trim());
             applyBackground(base64Data);
         } catch (err) {
-            alert("图片过大，保存失败（请尝试 2MB 以内的图片）");
+            alert(i18n[currentLang].bgMaxSize);
             document.getElementById('bgToggle').checked = false;
             clearBackground();
         }
@@ -320,7 +320,7 @@ function settingAuth(){
             return v === null || v === 'null' ? 'admin' : v;
         })();
         if (_appKey==='admin') {
-            appKey =prompt('Input auth（appKey）：');
+            appKey =prompt(i18n[currentLang].promptAuth);
             localStorage.setItem('appKey', appKey);
             refresh = true;
         } else {
@@ -428,7 +428,8 @@ const i18n = {
         alertAuth: '验证已关闭，使用默认用户: admin',
         promptAuth: '输入认证码 (appKey)：',
         confirmDel: '删除卡片',
-        bgSetting: '自定义背景'
+        bgSetting: '自定义背景',
+        bgMaxSize: '图片过大，保存失败（请尝试 2MB 以内的图片）'
     },
     'en': {
         title: 'WaySearch',
@@ -452,6 +453,7 @@ const i18n = {
         alertAuth: 'Authentication disabled, using default user: admin',
         promptAuth: 'Input auth (appKey):',
         confirmDel: 'Delete card',
-        bgSetting: 'Background'
+        bgSetting: 'Background',
+        bgMaxSize: 'Image too large, save failed (please try an image within 2MB)'
     }
 };
