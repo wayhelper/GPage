@@ -192,6 +192,7 @@ function toggleAuth(isAuth) {
         localStorage.setItem('appKey', localStorage.getItem('appKey') === 'admin' ? '' : localStorage.getItem('appKey'));
     } else {
         localStorage.setItem('appKey', localStorage.getItem('appKey') || 'admin');
+        appKey = localStorage.getItem('appKey');
     }
 }
 
