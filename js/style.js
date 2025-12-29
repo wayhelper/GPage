@@ -173,6 +173,7 @@ function openSettingsModal() {
 
 function closeSettingsModal() {
     document.getElementById("settingsModal").style.display = "none";
+    location.reload();
 }
 
 // 切换主题核心逻辑
@@ -192,7 +193,6 @@ function toggleAuth(isAuth) {
     } else {
         localStorage.setItem('appKey', localStorage.getItem('appKey') || 'admin');
     }
-    location.reload();
 }
 
 // =================== 页面加载事件 ===================
