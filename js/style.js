@@ -302,7 +302,7 @@ function applyLanguage() {
         id_theme.textContent = texts.darkMode;
         id_auth.textContent = texts.auth;
         id_lang.textContent = texts.langSelect;
-        id_top.textContent = texts.top;
+        id_top.textContent = texts.topList;
         settingsModal.querySelector('.submit-btn').textContent = texts.btnClose;
     }
     // 4. 更新页脚
@@ -326,7 +326,7 @@ const i18n = {
         darkMode: '暗黑模式',
         auth: '身份验证',
         langSelect: '切换语言 (中/英)',
-        top: '展示排名',
+        topList: '展示排名',
         btnClose: '关闭',
         contact: '联系我 📫',
         alertComplete: '请完整填写表单',
@@ -348,7 +348,7 @@ const i18n = {
         settings: 'Settings',
         darkMode: 'Dark Mode',
         auth: 'Auth',
-        top: 'Top Display',
+        topList: 'Top Display',
         btnClose: 'Close',
         contact: 'Contact Me 📫',
         langSelect: 'Language (CN/EN)',
