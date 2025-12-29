@@ -228,11 +228,14 @@ function settingAuth(){
         } else {
             appKey = localStorage.getItem('appKey');
         }
-    }/* else {
-        localStorage.setItem('appKey', 'admin');
-        appKey = 'admin';
-        alert('Authentication disabled, using default user: admin');
-    }*/
+    } else {
+        if (localStorage.getItem('appKey') !== 'admin') {
+            localStorage.setItem('appKey', 'admin');
+            appKey = 'admin';
+            alert('Authentication disabled, using default user: admin');
+            refresh = true;
+        }
+    }
 }
 //==================刷新逻辑=======================
 function refreshPage(){
