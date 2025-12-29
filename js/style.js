@@ -188,9 +188,7 @@ function toggleTheme(isDark) {
 }
 function toggleAuth(isAuth) {
     localStorage.setItem('auth', isAuth);
-    if (isAuth) {
-        localStorage.setItem('appKey', localStorage.getItem('appKey') === 'admin' ? '' : localStorage.getItem('appKey'));
-    } else {
+    if (!isAuth) {
         localStorage.setItem('appKey', localStorage.getItem('appKey') || 'admin');
         appKey = localStorage.getItem('appKey');
     }
@@ -227,17 +225,18 @@ function getWebsiteRunTime() {
 // =================== 身份验证 ===================
 function auth(auth){
     if (auth) {
-        appKey = localStorage.getItem('appKey') || '';
-        if (appKey==='') {
+        appKey = localStorage.getItem('appKey') || 'admin';
+        isAuth = localStorage.getItem('auth') === 'true';
+        if (appKey==='admin' && isAuth) {
             appKey =prompt('Input auth（appKey）：');
             localStorage.setItem('appKey', appKey);
         } else {
             appKey = localStorage.getItem('appKey');
         }
     } else {
-        localStorage.setItem('appKey', '');
-        appKey = '';
-        alert('已清除身份验证信息');
+        localStorage.setItem('appKey', 'admin');
+        appKey = 'admin';
+        alert('已清除您的身份验证信息！使用默认身份 "admin" 继续访问。');
     }
     location.reload();
 }
