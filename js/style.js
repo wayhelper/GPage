@@ -169,6 +169,8 @@ function openSettingsModal() {
 
 function closeSettingsModal() {
     document.getElementById("settingsModal").style.display = "none";
+    auth();
+    refreshPage();
 }
 
 // ============切换主题核心逻辑===================
@@ -183,7 +185,7 @@ function toggleTheme(isDark) {
 }
 function toggleAuth(isAuth) {
     localStorage.setItem('auth', isAuth);
-    refreshPage()
+    refresh = true;
 }
 
 // ==================页面加载事件 ===================
@@ -215,11 +217,10 @@ function getWebsiteRunTime() {
 }
 
 // =================== 身份验证 ===================
-function auth(auth){
-    if (auth) {
+function auth(){
+    if (localStorage.getItem('auth') === 'true') {
         appKey = localStorage.getItem('appKey') || 'admin';
-        isAuth = localStorage.getItem('auth') === 'true';
-        if (appKey==='admin' && isAuth) {
+        if (appKey==='admin') {
             appKey =prompt('Input auth（appKey）：');
             localStorage.setItem('appKey', appKey);
         } else {
@@ -228,9 +229,7 @@ function auth(auth){
     } else {
         localStorage.setItem('appKey', 'admin');
         appKey = 'admin';
-        alert('已清除您的身份验证信息！使用默认身份 "admin" 继续访问。');
     }
-    location.reload();
 }
 //==================刷新逻辑=======================
 function refreshPage(){
