@@ -229,7 +229,7 @@ function settingAuth(){
             appKey = localStorage.getItem('appKey');
         }
     } else {
-        if (localStorage.getItem('appKey') !== 'admin') {
+        if (localStorage.getItem('appKey') && localStorage.getItem('appKey') !== 'admin') {
             localStorage.setItem('appKey', 'admin');
             appKey = 'admin';
             alert('Authentication disabled, using default user: admin');
