@@ -2,7 +2,7 @@
 export const i18n = {
     'zh': {
         title: '路书',
-        searchPlaceholder: '搜索... (输入 / 显示所有卡片)',
+        searchPlaceholder: '搜索... ',
         addNav: '新增导航',
         siteName: '网站名称',
         siteUrl: '网站链接',
@@ -28,7 +28,7 @@ export const i18n = {
     },
     'en': {
         title: 'WaySearch',
-        searchPlaceholder: 'Search... (Input / to show all cards)',
+        searchPlaceholder: 'Search...',
         addNav: 'Add Nav',
         siteName: 'Site Name',
         siteUrl: 'URL',

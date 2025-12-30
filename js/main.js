@@ -2,7 +2,7 @@
 import { state, i18n } from './config.js';
 import { loadNavDataApi, updateNavDataApi } from './api.js';
 import { applyDynamic,toggleTheme, applyBackground } from './theme.js';
-import { getSearchEngineUrl, settingAuth ,renderCards, applyLanguageUI, filterCards} from './logic.js';
+import { getSearchEngineUrl, settingAuth ,renderCards, applyLanguageUI} from './logic.js';
 
 // ================== 初始化 ===================
 window.addEventListener('DOMContentLoaded', async () => {
@@ -103,4 +103,3 @@ window.handleBgUpload = (input) => {
     };
     reader.readAsDataURL(file);
 };
-window.filterCards =()=>filterCards();

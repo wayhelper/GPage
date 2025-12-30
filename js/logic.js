@@ -107,18 +107,3 @@ export function applyLanguageUI() {
         if (el) el.textContent = texts[labelMap[id]];
     }
 }
-export function filterCards() {
-    const query = document.getElementById('searchBox').value.toLowerCase();
-    const filtered = state.navData.filter(item => item.name.toLowerCase().includes(query));
-    if (state.topList === 'true') {
-        query.trim() === "/" ? renderCards(state.navData) : renderCards(filtered.slice(0, 6).length === 0 ? exactSearchByName('AddNav') : filtered.slice(0, 6));
-    } else {
-        query.trim() === "/" ? renderCards(state.navData) : renderCards(filtered.length === 0 ? exactSearchByName('AddNav') : filtered);
-    }
-}
-function exactSearchByName(name) {
-    const filtered = state.navData.filter(item => item.name.toLowerCase() === name.toLowerCase());
-    if (filtered.length > 0) {
-        return filtered;
-    }
-}
