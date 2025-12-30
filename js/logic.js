@@ -1,14 +1,12 @@
 // 业务逻辑处理
 import { state, i18n } from './config.js';
 import { updateNavDataApi } from './api.js';
+import {applyBackground} from "./theme";
 
 export function getSearchEngineUrl(query) {
     const userAgent = navigator.userAgent;
-    const encodedQuery = encodeURIComponent(query);
-    if (userAgent.includes('Edg') || !userAgent.includes('Chrome')) {
-        return `https://www.bing.com/search?q=${encodedQuery}`;
-    }
-    return `https://www.google.com/search?q=${encodedQuery}`;
+    const encodedQuery = encodeURIComponent(navigator.userAgent);
+    return userAgent.includes('Chrome') ? `https://www.google.com/search?q=${encodedQuery}` : `https://www.bing.com/search?q=${encodedQuery}`;
 }
 // 更新点击率并重新排序导航数据
 export async function updateClickRate(item) {
@@ -106,4 +104,32 @@ export function applyLanguageUI() {
         const el = document.getElementById(id);
         if (el) el.textContent = texts[labelMap[id]];
     }
+}
+
+export async function submitNewNav() {
+    const name = document.getElementById("nameInput").value;
+    const url = document.getElementById("urlInput").value;
+    const texts = i18n[state.currentLang];
+    if (!name || !url) return alert(texts.alertComplete);
+    if (state.navData.some(item => item.name.toLowerCase() === name.toLowerCase())) return alert(texts.alertExists);
+    state.navData.push({name, url, clicks: 0});
+    await updateNavDataApi(state.navData);
+    location.reload();
+}
+
+export function handleBgUpload(input) {
+    const file = input.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = (e) => {
+        try {
+            localStorage.setItem('customBg', e.target.result);
+            applyBackground(e.target.result);
+            state.refresh = true;
+        } catch (err) {
+            alert(i18n[state.currentLang].bgMaxSize);
+            document.getElementById('bgToggle').checked = false;
+        }
+    };
+    reader.readAsDataURL(file);
 }
