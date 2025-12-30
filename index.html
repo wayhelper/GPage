@@ -6,7 +6,15 @@
         <title>WaySearch</title>
         <link rel="shortcut icon" type="image/x-icon" href="./css/favicon.ico">
         <link rel="stylesheet" href="./css/style.css?v=202512301719">
-        <script type="module" src="./js/main.js?v=202512301729"></script>
+        <script type="module" src="./js/main.js?v=202512301744"></script>
+        <script type="application/javascript">
+            (function() {
+                const savedTheme = localStorage.getItem('theme');
+                if (savedTheme === 'dark') {
+                    document.documentElement.setAttribute('data-theme', 'dark');
+                }
+            })();
+        </script>
     </head>
     <body>
         <h1>WaySearch</h1>

@@ -1,12 +1,12 @@
 // 主题代码
-export function toggleTheme(isDark) {
-    const theme = isDark ? 'dark' : 'light';
-    if (isDark) {
+export function toggleTheme(isOn) {
+    if (isOn) {
         document.documentElement.setAttribute('data-theme', 'dark');
+        localStorage.setItem('theme', 'dark');
     } else {
         document.documentElement.removeAttribute('data-theme');
+        localStorage.setItem('theme', 'light');
     }
-    localStorage.setItem('theme', theme);
 }
 // 应用自定义背景图或彩带效果
 export function applyBackground(bgData) {

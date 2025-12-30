@@ -9,7 +9,6 @@ window.addEventListener('DOMContentLoaded', async () => {
     applyDynamic();
     applyLanguageUI();
     applyBackground(localStorage.getItem('customBg'));
-    toggleTheme(localStorage.getItem('theme') === 'dark');
     settingAuth();
 
     state.navData = await loadNavDataApi();
