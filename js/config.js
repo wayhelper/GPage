@@ -23,7 +23,8 @@ export const i18n = {
         promptAuth: '输入认证码 (appKey)：',
         confirmDel: '删除卡片',
         bgSetting: '自定义背景',
-        bgMaxSize: '图片过大，保存失败（请尝试 2MB 以内的图片）'
+        bgMaxSize: '图片过大，保存失败（请尝试 2MB 以内的图片）',
+        Dynamic: '动态背景'
     },
     'en': {
         title: 'WaySearch',
@@ -48,7 +49,8 @@ export const i18n = {
         promptAuth: 'Input auth (appKey):',
         confirmDel: 'Delete card',
         bgSetting: 'Background',
-        bgMaxSize: 'Image too large, save failed (please try an image within 2MB)'
+        bgMaxSize: 'Image too large, save failed (please try an image within 2MB)',
+        Dynamic: 'Dynamic Background'
     }
 };
 

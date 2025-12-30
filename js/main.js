@@ -1,12 +1,12 @@
 // ================== 导入模块 ===================
 import { state, i18n } from './config.js';
 import { loadNavDataApi, updateNavDataApi } from './api.js';
-import { SeasonEffects,toggleTheme, applyBackground } from './theme.js';
+import { applyDynamic,toggleTheme, applyBackground } from './theme.js';
 import { getSearchEngineUrl, settingAuth ,renderCards, applyLanguageUI, filterCards} from './logic.js';
 
 // ================== 初始化 ===================
 window.addEventListener('DOMContentLoaded', async () => {
-    new SeasonEffects();
+    applyDynamic();
     applyLanguageUI();
     applyBackground(localStorage.getItem('customBg'));
     toggleTheme(localStorage.getItem('theme') === 'dark');
@@ -50,6 +50,7 @@ window.openSettingsModal = () => {
     document.getElementById('languageToggle').checked = (state.currentLang === 'zh');
     document.getElementById('topToggle').checked = localStorage.getItem('topList') === 'true';
     document.getElementById('bgToggle').checked = Boolean(localStorage.getItem('customBg'));
+    document.getElementById('dynamicToggle').checked = localStorage.getItem('dynamicBg') === 'true';
 };
 
 window.closeSettingsModal = () => {
@@ -70,19 +71,21 @@ window.submitNewNav = async () => {
     location.reload();
 };
 
-window.toggleTheme = (isDark) => toggleTheme(isDark);
-window.toggleAuth = (isAuth) => { localStorage.setItem('auth', isAuth); state.refresh = true; };
-window.toggleLanguage = (isZh) => {
-    state.currentLang = isZh ? 'zh' : 'en';
+window.toggleTheme = (isOn) => toggleTheme(isOn);
+window.toggleAuth = (isOn) => { localStorage.setItem('auth', isOn); state.refresh = true; };
+window.toggleLanguage = (isOn) => {
+    state.currentLang = isOn ? 'zh' : 'en';
     localStorage.setItem('lang', state.currentLang);
     applyLanguageUI();
 };
-window.toggleTop = (isTop) => { localStorage.setItem('topList', isTop); state.refresh = true; };
+window.toggleTop = (isOn) => { localStorage.setItem('topList', isOn); state.refresh = true; };
 
 window.toggleBackground = (isOn) => {
     if (isOn) document.getElementById('bgFileInput').click();
     else { localStorage.removeItem('customBg'); applyBackground(null); }
 };
+
+window.toggleDynamic= (isOn)=>{ localStorage.setItem('dynamicBg', isOn); state.refresh=true;};
 
 window.handleBgUpload = (input) => {
     const file = input.files[0];

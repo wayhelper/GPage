@@ -101,7 +101,7 @@ export function applyLanguageUI() {
     if (settingsH3) settingsH3.textContent = texts.settings;
 
     // 更新各 Label (根据 ID 匹配)
-    const labelMap = { 'id-theme': 'darkMode', 'id-auth': 'auth', 'id-lang': 'langSelect', 'id-top': 'topList', 'id-bg': 'bgSetting' };
+    const labelMap = { 'id-theme': 'darkMode', 'id-auth': 'auth', 'id-lang': 'langSelect', 'id-top': 'topList', 'id-bg': 'bgSetting', 'id-dynamic': 'Dynamic' };
     for (let id in labelMap) {
         const el = document.getElementById(id);
         if (el) el.textContent = texts[labelMap[id]];

@@ -73,6 +73,14 @@
                     </label>
                 </div>
 
+                <div class="setting-item">
+                    <span id="id-dynamic">动态背景</span>
+                    <label class="switch">
+                        <input type="checkbox" id="dynamicToggle" onchange="toggleDynamic(this.checked)">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+
                 <input type="file" id="bgFileInput" accept="image/*" style="display: none;" onchange="handleBgUpload(this)">
                 <hr style="border: 0; border-top: 1px solid var(--input-border); margin: 15px 0;">
 

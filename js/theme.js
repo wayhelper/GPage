@@ -23,6 +23,17 @@ export function applyBackground(bgData) {
         loadRibbon();
     }
 }
+export function applyDynamic(){
+    if (localStorage.getItem('dynamicBg') === 'true') {
+        new SeasonEffects();
+    } else {
+        // 移除已有的季节特效画布
+        const existingCanvas = document.querySelector('canvas');
+        if (existingCanvas) {
+            existingCanvas.remove();
+        }
+    }
+}
 export function loadRibbon() {
     // 创建配置用的虚拟元素
     if (!document.getElementById('ribbon')) {
