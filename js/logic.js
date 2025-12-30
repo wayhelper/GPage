@@ -111,9 +111,9 @@ export function filterCards() {
     const query = document.getElementById('searchBox').value.toLowerCase();
     const filtered = state.navData.filter(item => item.name.toLowerCase().includes(query));
     if (state.topList === 'true') {
-        query === "/" ? renderCards(state.navData) : renderCards(filtered.slice(0, 6).length === 0 ? exactSearchByName('AddNav') : filtered.slice(0, 6));
+        query.trim() === "/" ? renderCards(state.navData) : renderCards(filtered.slice(0, 6).length === 0 ? exactSearchByName('AddNav') : filtered.slice(0, 6));
     } else {
-        query === "/" ? renderCards(state.navData) : renderCards(filtered.length === 0 ? exactSearchByName('AddNav') : filtered);
+        query.trim() === "/" ? renderCards(state.navData) : renderCards(filtered.length === 0 ? exactSearchByName('AddNav') : filtered);
     }
 }
 function exactSearchByName(name) {
