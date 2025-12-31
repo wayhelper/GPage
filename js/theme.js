@@ -1,4 +1,5 @@
 // 主题代码
+let currentSeasonEffect = null; // 在模块作用域记录当前实例
 export function toggleTheme(isOn) {
     if (isOn) {
         document.documentElement.setAttribute('data-theme', 'dark');
@@ -23,15 +24,14 @@ export function applyBackground(bgData) {
         loadRibbon();
     }
 }
+// 应用动态背景效果
 export function applyDynamic(){
+    if (currentSeasonEffect) {
+        currentSeasonEffect.destroy(); // 销毁旧实例
+        currentSeasonEffect = null;
+    }
     if (localStorage.getItem('dynamicBg') === 'true') {
-        new SeasonEffects();
-    } else {
-        // 移除已有的季节特效画布
-        const existingCanvas = document.querySelector('canvas');
-        if (existingCanvas) {
-            existingCanvas.remove();
-        }
+        currentSeasonEffect = new SeasonEffects();
     }
 }
 export function loadRibbon() {
@@ -126,8 +126,14 @@ export class SeasonEffects {
         this.canvas = null;
         this.ctx = null;
         this.particles = [];
-        // 允许手动传入季节，否则自动获取
+        this.animationId = null; // 用于记录 requestAnimationFrame 的 ID
+        this.isRunning = true;   // 状态标志位
+
         this.season = options.season || this._getSeason();
+
+        // 绑定 resize 处理器，方便后续准确移除
+        this.resizeHandler = this._handleResize.bind(this);
+
         this.init();
     }
 
@@ -139,8 +145,15 @@ export class SeasonEffects {
         return 'winter';
     }
 
+    _handleResize() {
+        if (this.canvas) {
+            this.canvas.width = window.innerWidth;
+            this.canvas.height = window.innerHeight;
+            this._createParticles(); // 窗口缩放时重新生成粒子以适应新尺寸
+        }
+    }
+
     _createParticles() {
-        // 配置参数
         const density = 30;
         const baseSize = 25;
         const sizeRandom = 15;
@@ -158,8 +171,8 @@ export class SeasonEffects {
         this.particles = [];
         for (let i = 0; i < density; i++) {
             this.particles.push({
-                x: Math.random() * this.canvas.width,
-                y: Math.random() * this.canvas.height,
+                x: Math.random() * (this.canvas?.width || window.innerWidth),
+                y: Math.random() * (this.canvas?.height || window.innerHeight),
                 vy: (Math.random() * speedRandom + 0.5) * baseSpeed,
                 vx: (Math.random() - 0.5) * driftIntensity,
                 size: Math.random() * sizeRandom + baseSize,
@@ -184,26 +197,53 @@ export class SeasonEffects {
         ctx.restore();
     }
 
+    /**
+     * 销毁方法：这是防止内存泄漏的关键
+     */
+    destroy() {
+        this.isRunning = false;
+
+        // 1. 停止动画循环
+        if (this.animationId) {
+            cancelAnimationFrame(this.animationId);
+        }
+
+        // 2. 移除事件监听
+        window.removeEventListener('resize', this.resizeHandler);
+
+        // 3. 移除 DOM 元素
+        if (this.canvas && this.canvas.parentNode) {
+            this.canvas.parentNode.removeChild(this.canvas);
+        }
+
+        // 4. 清空引用帮助 GC (垃圾回收)
+        this.canvas = null;
+        this.ctx = null;
+        this.particles = [];
+    }
+
     init() {
         this.canvas = document.createElement('canvas');
         this.ctx = this.canvas.getContext('2d');
         Object.assign(this.canvas.style, {
-            position: 'fixed', top: '0', left: '0',
-            width: '100vw', height: '100vh',
-            zIndex: '999999', pointerEvents: 'none'
+            position: 'fixed',
+            top: '0',
+            left: '0',
+            width: '100vw',
+            height: '100vh',
+            zIndex: '9999', // 稍微调低一点，避免完全挡住交互
+            pointerEvents: 'none'
         });
         document.body.appendChild(this.canvas);
 
-        const resize = () => {
-            this.canvas.width = window.innerWidth;
-            this.canvas.height = window.innerHeight;
-        };
-        resize();
-        window.addEventListener('resize', resize);
+        this._handleResize();
+        window.addEventListener('resize', this.resizeHandler);
 
         this._createParticles();
 
         const animate = () => {
+            if (!this.isRunning) return; // 检查运行状态
+
             this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
             this.particles.forEach(p => {
                 p.y += p.vy;
@@ -216,7 +256,7 @@ export class SeasonEffects {
                 }
                 this._drawParticle(p);
             });
-            requestAnimationFrame(animate);
+            this.animationId = requestAnimationFrame(animate);
         };
         animate();
     }
