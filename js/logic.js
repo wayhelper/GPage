@@ -5,8 +5,14 @@ import { applyBackground } from './theme.js';
 
 export function getSearchEngineUrl(query) {
     const userAgent = navigator.userAgent;
-    const encodedQuery = encodeURIComponent(navigator.userAgent);
-    return userAgent.includes('Chrome') ? `https://www.google.com/search?q=${encodedQuery}` : `https://www.bing.com/search?q=${encodedQuery}`;
+    const encodedQuery = encodeURIComponent(query);
+    if (userAgent.includes('Edg')) {
+        return `https://www.bing.com/search?q=${encodedQuery}`;
+    } else if (userAgent.includes('Chrome')) {
+        return `https://www.google.com/search?q=${encodedQuery}`;
+    } else {
+        return `https://www.bing.com/search?q=${encodedQuery}`;
+    }
 }
 // 更新点击率并重新排序导航数据
 export async function updateClickRate(item) {

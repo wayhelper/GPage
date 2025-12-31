@@ -36,7 +36,7 @@ window.addEventListener('DOMContentLoaded', async () => {
     // 回车搜索
     searchBox.addEventListener('keydown', (e) => {
         if (e.key === 'Enter') {
-            const query = searchBox.value.trim();
+            const query = searchBox.value.toLowerCase();
             if (query) window.open(getSearchEngineUrl(query), '_blank');
         }
     });
