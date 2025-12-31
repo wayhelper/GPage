@@ -5,8 +5,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>WaySearch</title>
         <link rel="shortcut icon" type="image/x-icon" href="./css/favicon.ico">
-        <link rel="stylesheet" href="./css/style.css?v=202512301719">
-        <script type="module" src="./js/main.js?v=202512311432"></script>
+        <link rel="stylesheet" href="./css/style.css?v=202512311454">
+        <script type="module" src="./js/main.js?v=202512311454"></script>
         <script type="application/javascript">
             (function() {
                 const savedTheme = localStorage.getItem('theme');
@@ -21,17 +21,24 @@
         <input type="text" id="searchBox" placeholder="Search...">
         <div class="card-container" id="navCards"></div>
         <!-- 新增模态框 -->
-        <div id="myModal" class="modal">
+        <div id="add-model" class="modal">
             <div class="modal-box">
-                <h3 id="h3-add">AddNav</h3>
+                <h3 id="h3-add">添加导航</h3>
 
-                <label id="label-site">site</label>
-                <label for="inputName"></label><input id="inputName" placeholder="Input Website Name">
+                <div class="input-group">
+                    <label id="label-site">网站名称</label>
+                    <input id="inputName" type="text" placeholder="输入网站名称">
+                </div>
 
-                <label id="label-url">url</label>
-                <label for="inputUrl"></label><input id="inputUrl" placeholder="https://example.com">
+                <div class="input-group">
+                    <label id="label-url">网址</label>
+                    <input id="inputUrl" type="url" placeholder="https://example.com">
+                </div>
 
-                <button id="submitBtn" class="submit-btn" onclick="submitNewNav()">Ok</button>
+                <div class="modal-footer">
+                    <button id="cancelBtn" class="btn btn-secondary" onclick="closeModal()">取消</button>
+                    <button id="submitBtn" class="btn btn-primary" onclick="submitNewNav()">确认</button>
+                </div>
             </div>
         </div>
         <!--设置模态框-->

@@ -43,8 +43,8 @@ window.addEventListener('DOMContentLoaded', async () => {
 });
 
 // ================== 全局挂载 (供 HTML 调用) ===================
-window.openModal = () => document.getElementById("myModal").style.display = "flex";
-window.closeModal = () => document.getElementById("myModal").style.display = "none";
+window.openModal = () => document.getElementById("add-model").style.display = "flex";
+window.closeModal = () => document.getElementById("add-model").style.display = "none";
 // ================== 打开设置 =================================
 window.openSettingsModal = () => {
     document.getElementById("settingsModal").style.display = "flex";
