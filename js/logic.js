@@ -93,6 +93,8 @@ export function applyLanguageUI() {
     // 模态框更新
     const modalH3 = document.querySelector('#myModal h3');
     if (modalH3) modalH3.textContent = texts.addNav;
+    modalH3.labels[0].textContent = texts.siteName;
+    modalH3.labels[1].textContent = texts.siteUrl;
 
     const settingsH3 = document.querySelector('#settingsModal h3');
     if (settingsH3) settingsH3.textContent = texts.settings;
