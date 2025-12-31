@@ -1,6 +1,6 @@
 // ================== 导入模块 ===================
-import { state, i18n } from './config.js';
-import { loadNavDataApi, updateNavDataApi } from './api.js';
+import { state } from './config.js';
+import { loadNavDataApi } from './api.js';
 import { applyDynamic,toggleTheme, applyBackground } from './theme.js';
 import { getSearchEngineUrl, settingAuth ,renderCards, applyLanguageUI, submitNewNav, handleBgUpload} from './logic.js';
 
@@ -55,21 +55,21 @@ window.openSettingsModal = () => {
     document.getElementById('bgToggle').checked = Boolean(localStorage.getItem('customBg'));
     document.getElementById('dynamicToggle').checked = localStorage.getItem('dynamicBg') === 'true';
 };
-// ================== 关闭设置 =================================
+// ================== 关闭设置 ===================================
 window.closeSettingsModal = () => {document.getElementById("settingsModal").style.display = "none";if (state.refresh) location.reload();};
-// ================== 切换主题 =================================
+// ================== 切换主题 ===================================
 window.toggleTheme = (isOn) => toggleTheme(isOn);
-// ================== 切换身份验证 =================================
+// ================== 切换身份验证 ================================
 window.toggleAuth = (isOn) => { localStorage.setItem('auth', isOn); state.refresh = true; };
 // ================== 切换语言 =================================
 window.toggleLanguage = (isOn) => { localStorage.setItem('lang', isOn ? 'zh' : 'en');applyLanguageUI(); };
 // ================== 切换置顶显示 =================================
 window.toggleTop = (isOn) => { localStorage.setItem('topList', isOn); state.refresh = true; };
-// ================== 切换自定义背景 =================================
+// ================== 切换自定义背景 ===============================
 window.toggleBackground = (isOn) => { if (isOn) document.getElementById('bgFileInput').click(); else { localStorage.removeItem('customBg'); applyBackground(null); } };
 // ================== 切换动态背景 =================================
 window.toggleDynamic= (isOn)=>{ localStorage.setItem('dynamicBg', isOn); state.refresh=true;};
 // ================== 提交新增导航 =================================
 window.submitNewNav = async () => submitNewNav();
-// ================== 处理背景图上传 =================================
+// ================== 处理背景图上传 ================================
 window.handleBgUpload = (input) => handleBgUpload(input);

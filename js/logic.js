@@ -1,7 +1,7 @@
 // 业务逻辑处理
 import { state, i18n } from './config.js';
 import { updateNavDataApi } from './api.js';
-import {applyBackground} from "./theme";
+import { applyBackground } from './theme.js';
 
 export function getSearchEngineUrl(query) {
     const userAgent = navigator.userAgent;
