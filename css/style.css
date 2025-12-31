@@ -172,24 +172,6 @@ footer {
     transform: translateX(0);
 }
 
-/* 按钮外观 */
-/*.menu button {
-    padding: 6px 10px;
-    border-radius: 6px;
-    border: none;
-    background: #555;
-    color: #fff;
-    cursor: pointer;
-    font-size: 13px;
-    white-space: nowrap;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.menu button:hover {
-    background: #777;
-}*/
 /*模态框表单开始*/
 /* 背景遮罩 */
 .modal {

@@ -93,8 +93,12 @@ export function applyLanguageUI() {
     const settingsH3 = document.querySelector('#settingsModal h3');
     if (settingsH3) settingsH3.textContent = texts.settings;
 
+    const inputName = document.getElementById('inputName');
+    const inputUrl = document.getElementById('inputUrl');
+    if (inputName) inputName.placeholder = texts.inputName;
+    if (inputUrl) inputUrl.placeholder = texts.inputUrl;
     // 更新各 Label (根据 ID 匹配)
-    const labelMap = { 'id-theme': 'darkMode', 'id-auth': 'auth', 'id-lang': 'langSelect', 'id-top': 'topList', 'id-bg': 'bgSetting', 'id-dynamic': 'Dynamic','inputName':'inputName','inputUrl':'inputUrl','h3-add':'addNav','label-site':'siteName','label-url':'siteUrl'};
+    const labelMap = { 'id-theme': 'darkMode', 'id-auth': 'auth', 'id-lang': 'langSelect', 'id-top': 'topList', 'id-bg': 'bgSetting', 'id-dynamic': 'Dynamic','h3-add':'addNav','label-site':'siteName','label-url':'siteUrl'};
     for (let id in labelMap) {
         const el = document.getElementById(id);
         if (el) el.textContent = texts[labelMap[id]];
@@ -105,9 +109,7 @@ export async function submitNewNav() {
     const name = document.getElementById("inputName").value;
     const url = document.getElementById("inputUrl").value;
     const texts = i18n[state.currentLang];
-    if (!name || !url) {
-        return alert(texts.alertComplete);
-    }
+    if (!name || !url) {alert(texts.alertComplete);return;}
     if (state.navData.some(item => item.name.toLowerCase() === name.toLowerCase())) return alert(texts.alertExists);
     state.navData.push({name, url, clicks: 0});
     await updateNavDataApi(state.navData);
