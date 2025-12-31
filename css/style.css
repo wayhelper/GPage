@@ -6,7 +6,6 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    /*add*/
     background: var(--bg-color);
     transition: background 0.3s ease;
 }
@@ -186,7 +185,7 @@ footer {
 .modal {
     position: fixed;
     inset: 0;
-    background: rgba(0, 0, 0, 0.3);
+    background: var(--bg-color);
     backdrop-filter: blur(8px); /* 现代磨砂玻璃感 */
     -webkit-backdrop-filter: blur(8px);
     display: none; /* 逻辑控制显示 */
@@ -198,8 +197,8 @@ footer {
 
 /* 内容弹窗 */
 .modal-box {
-    background: var(--bg-card);
-    color: var(--text-main);
+    background: var(--modal-bg);
+    color: var(--modal-text);
     padding: 32px;
     border-radius: 20px;
     width: 90%;
@@ -240,7 +239,8 @@ footer {
     border: 1.5px solid var(--border-color);
     border-radius: 12px;
     font-size: 16px;
-    background: #f5f5f7;
+    background: var(--bg-color);
+    color: var(--text-color);
     transition: all 0.2s ease;
 }
 
@@ -343,6 +343,8 @@ footer {
     --card-bg: #ffffff;
     --text-color: #555;
     --input-border: #ddd;
+    --modal-bg: rgba(255, 255, 255, 0.95);
+    --modal-text: #1d1d1f;
 }
 
 /* 暗色模式变量 */
@@ -351,6 +353,8 @@ footer {
     --card-bg: #2d2d2d;
     --text-color: #e0e0e0;
     --input-border: #444;
+    --modal-bg: #2d2d2d;
+    --modal-text: #f0f2f5;
 }
 /* 设置项布局 */
 .setting-item {
