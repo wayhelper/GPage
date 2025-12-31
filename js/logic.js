@@ -100,7 +100,7 @@ export function applyLanguageUI() {
     if (settingsH3) settingsH3.textContent = texts.settings;
 
     // 更新各 Label (根据 ID 匹配)
-    const labelMap = { 'id-theme': 'darkMode', 'id-auth': 'auth', 'id-lang': 'langSelect', 'id-top': 'topList', 'id-bg': 'bgSetting', 'id-dynamic': 'Dynamic' };
+    const labelMap = { 'id-theme': 'darkMode', 'id-auth': 'auth', 'id-lang': 'langSelect', 'id-top': 'topList', 'id-bg': 'bgSetting', 'id-dynamic': 'Dynamic','inputName':'inputName','inputUrl':'inputUrl'};
     for (let id in labelMap) {
         const el = document.getElementById(id);
         if (el) el.textContent = texts[labelMap[id]];
@@ -108,10 +108,12 @@ export function applyLanguageUI() {
 }
 
 export async function submitNewNav() {
-    const name = document.getElementById("nameInput").value;
-    const url = document.getElementById("urlInput").value;
+    const name = document.getElementById("inputName").value;
+    const url = document.getElementById("inputUrl").value;
     const texts = i18n[state.currentLang];
-    if (!name || !url) return alert(texts.alertComplete);
+    if (!name || !url) {
+        return alert(texts.alertComplete);
+    }
     if (state.navData.some(item => item.name.toLowerCase() === name.toLowerCase())) return alert(texts.alertExists);
     state.navData.push({name, url, clicks: 0});
     await updateNavDataApi(state.navData);
