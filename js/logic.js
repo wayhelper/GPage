@@ -65,7 +65,7 @@ export function renderCards(data) {
             item.clicks = item.clicks === -1 ? -1 : (item.clicks || 0) + 1;
             await updateClickRate(item);
             window.open(item.url, '_blank', 'noopener,noreferrer');
-            renderCards(state.navData);
+            renderCards(item);
         };
 
         card.oncontextmenu = (e) => {

@@ -2,7 +2,7 @@
 import { state } from './config.js';
 import { loadNavDataApi } from './api.js';
 import { applyDynamic,toggleTheme, applyBackground } from './theme.js';
-import { getSearchEngineUrl, settingAuth ,renderCards, applyLanguageUI, submitNewNav, handleBgUpload} from './logic.js';
+import { getSearchEngineUrl, settingAuth ,renderCards, applyLanguageUI, submitNewNav, handleBgUpload } from './logic.js';
 
 // ================== 初始化 ===================
 window.addEventListener('DOMContentLoaded', async () => {
