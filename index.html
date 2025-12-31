@@ -6,7 +6,7 @@
         <title>WaySearch</title>
         <link rel="shortcut icon" type="image/x-icon" href="./css/favicon.ico">
         <link rel="stylesheet" href="./css/style.css?v=202512301719">
-        <script type="module" src="./js/main.js?v=202512311422"></script>
+        <script type="module" src="./js/main.js?v=202512311432"></script>
         <script type="application/javascript">
             (function() {
                 const savedTheme = localStorage.getItem('theme');
@@ -23,12 +23,12 @@
         <!-- 新增模态框 -->
         <div id="myModal" class="modal">
             <div class="modal-box">
-                <h3>AddNav</h3>
+                <h3 id="h3-add">AddNav</h3>
 
-                <label>site</label>
+                <label id="label-site">site</label>
                 <input id="inputName" placeholder="Input Website Name">
 
-                <label>url</label>
+                <label id="label-url">url</label>
                 <input id="inputUrl" placeholder="https://example.com">
 
                 <button id="submitBtn" class="submit-btn" onclick="submitNewNav()">Ok</button>

@@ -90,17 +90,11 @@ export function applyLanguageUI() {
     const searchBox = document.getElementById('searchBox');
     if (searchBox) searchBox.placeholder = texts.searchPlaceholder;
 
-    // 模态框更新
-    const modalH3 = document.querySelector('#myModal h3');
-    if (modalH3) modalH3.textContent = texts.addNav;
-    modalH3.labels[0].textContent = texts.siteName;
-    modalH3.labels[1].textContent = texts.siteUrl;
-
     const settingsH3 = document.querySelector('#settingsModal h3');
     if (settingsH3) settingsH3.textContent = texts.settings;
 
     // 更新各 Label (根据 ID 匹配)
-    const labelMap = { 'id-theme': 'darkMode', 'id-auth': 'auth', 'id-lang': 'langSelect', 'id-top': 'topList', 'id-bg': 'bgSetting', 'id-dynamic': 'Dynamic','inputName':'inputName','inputUrl':'inputUrl'};
+    const labelMap = { 'id-theme': 'darkMode', 'id-auth': 'auth', 'id-lang': 'langSelect', 'id-top': 'topList', 'id-bg': 'bgSetting', 'id-dynamic': 'Dynamic','inputName':'inputName','inputUrl':'inputUrl','h3-add':'addNav','label-site':'siteName','label-url':'siteUrl'};
     for (let id in labelMap) {
         const el = document.getElementById(id);
         if (el) el.textContent = texts[labelMap[id]];
