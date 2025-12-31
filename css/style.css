@@ -290,6 +290,26 @@ footer {
 .btn:active {
     transform: scale(0.97);
 }
+
+/* 按钮 */
+.submit-btn {
+    width: 50%;
+    padding: 10px 12px;
+    background: #007aff;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    cursor: pointer;
+    transition: background .2s;
+    display: block;
+    margin: 0 auto;
+}
+
+
+.submit-btn:hover {
+    background: #0066d8;
+}
 /*模态框表单结束*/
 /* 动画 */
 @keyframes fadeIn {
