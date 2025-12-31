@@ -45,7 +45,7 @@ export function loadRibbon() {
         meta.setAttribute('mobile', 'false');
         meta.setAttribute('data-click', 'true');
         document.body.appendChild(meta);
-        initRibbon(); // 直接运行代码
+        initRibbon();
     }
 }
 
@@ -54,7 +54,7 @@ export function removeRibbon() {
     const meta = document.getElementById('ribbon');
     if (canvas) canvas.remove();
     if (meta) meta.remove();
-    document.onclick = null; // 清除彩带的点击刷新事件
+    document.onclick = null;
 }
 
 // 背景彩带效果代码
