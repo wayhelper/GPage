@@ -62,7 +62,7 @@ window.toggleTheme = (isOn) => toggleTheme(isOn);
 // ================== 切换身份验证 ================================
 window.toggleAuth = (isOn) => { localStorage.setItem('auth', isOn); state.refresh = true; };
 // ================== 切换语言 =================================
-window.toggleLanguage = (isOn) => { localStorage.setItem('lang', isOn ? 'zh' : 'en');applyLanguageUI(); };
+window.toggleLanguage = (isOn) => { localStorage.setItem('lang', isOn ? 'zh' : 'en');applyLanguageUI(); state.refresh=true; };
 // ================== 切换置顶显示 =================================
 window.toggleTop = (isOn) => { localStorage.setItem('topList', isOn); state.refresh = true; };
 // ================== 切换自定义背景 ===============================
